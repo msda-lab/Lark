@@ -18,3 +18,4 @@ Mixed-Signal Design Automation Tool.
 1. `git status`
 2. `git branch -a`
 3. `git checkout branch`
+4. other `merge` operations.
