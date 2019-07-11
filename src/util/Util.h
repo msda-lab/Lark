@@ -9,15 +9,15 @@
 #include <string>
 #include <map>
 
-#include "GlobalDef.h"
+#include "Global.h"
 
 using std::string;
 using std::map;
 using std::cout;
 using std::endl;
 
-double str2val(char *s);
+double Str2Val(char *s);
 
-void displayAnalysis(int anaType, const map<int, string> &output);
+void DisplayAnalysis(int anaType, const map<int, string> &_output);
 
 #endif

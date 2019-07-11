@@ -2,8 +2,8 @@
 SRC_DIR = ..
 
 INC_PATH = -I$(SRC_DIR)/include\
-		   -I$(SRC_DIR)/include/analyser\
-           -I$(SRC_DIR)/include/util
+		   -I$(SRC_DIR)/analyser\
+           -I$(SRC_DIR)/util
 
 #CXX = clang++
 CXX = g++

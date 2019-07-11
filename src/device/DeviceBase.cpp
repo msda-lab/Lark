@@ -12,12 +12,12 @@ Device::~Device()
 
 }
 
-void Device::setName(const string &_name)
+void Device::SetName(const string &_name)
 {
     this->name = _name;
 }
 
-string Device::getName() const 
+string Device::GetName() const 
 {
     return name;
 }
@@ -27,18 +27,18 @@ bool Device::Equal(const string &_name, const Device *_dev)
     return _name == _dev->name;
 }
 
-void Device::setup()
+void Device::Setup()
 {
-    setupDC();
-    // setupAC();
-    // setuoTRAN();
+    SetupDC();
+    // SetupAC();
+    // SetuoTRAN();
 }
 
-void Device::load()
+void Device::Load()
 {
-    loadDC();
-    // loadAC();
-    // loadTRAN();
+    LoadDC();
+    // LoadAC();
+    // LoadTRAN();
 
 }
 
@@ -61,31 +61,31 @@ bool Node::Equal(const string &_name, Node *_node)
 
 }
 
-void Node::setDCVoltage(double _dc)
+void Node::SetDCVoltage(double _dc)
 {
-    dcVoltage = _dc;
+    dc_voltage = _dc;
 }
 
-double Node::getDCVoltage() const
+double Node::GetDCVoltage() const
 {
-    return dcVoltage;
+    return dc_voltage;
 }
 
-void Node::setACVoltage(Complex _ac)
+void Node::SetACVoltage(Complex _ac)
 {
-    acVoltage = _ac;
+    ac_voltage = _ac;
 }
 
-Complex Node::getACVoltage() const
+Complex Node::GetACVoltage() const
 {
-    return acVoltage;
+    return ac_voltage;
 }
 
-void Node::setName(const string &_name)
+void Node::SetName(const string &_name)
 {
-    this->name = _name;
+    name = _name;
 }
 
-string Node::getName() const{
+string Node::GetName() const{
     return name;
 }

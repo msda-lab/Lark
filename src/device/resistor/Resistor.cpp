@@ -3,9 +3,9 @@
 Resistor::Resistor(const string &_name, Node *_n1, Node *_n2, double _r)
     : Device(_name)
 {
-    this->r = _r;
-    this->n1 = _n1;
-    this->n2 = _n2;
+    r = _r;
+    n1 = _n1;
+    n2 = _n2;
 }
 
 Resistor::~Resistor()
@@ -13,72 +13,72 @@ Resistor::~Resistor()
 
 }
 
-void Resistor::setupDC()
+void Resistor::SetupDC()
 {
 
 }
 
-void Resistor::setupAC()
+void Resistor::SetupAC()
 {
 
 }
 
-void Resistor::setupTRAN()
+void Resistor::SetupTRAN()
 {
 
 }
 
-void Resistor::loadDC()
+void Resistor::LoadDC()
 {
 
 }
 
-void Resistor::loadAC()
+void Resistor::LoadAC()
 {
 
 }
 
-void Resistor::loadTRAN()
+void Resistor::LoadTRAN()
 {
 
 }
 
-void Resistor::setDCVoltage(double _dcVoltage)
+void Resistor::SetDCVoltage(double _dc_voltage)
 {
-    dcVoltage = _dcVoltage;
+    dc_voltage = _dc_voltage;
 }
 
-double Resistor::getDCVoltage() const
+double Resistor::GetDCVoltage() const
 {
-    return dcVoltage;
+    return dc_voltage;
 }
 
-void Resistor::setDCCurrent(double _dcCurrent)
+void Resistor::SetDCCurrent(double _dc_current)
 {
-    dcCurrent = _dcCurrent;
+    dc_current = _dc_current;
 }
 
-double Resistor::getDCCurrent() const
+double Resistor::GetDCCurrent() const
 {
-    return dcCurrent;
+    return dc_current;
 }
 
-void Resistor::setACVoltage(Complex _acVoltage)
+void Resistor::SetACVoltage(Complex _ac_voltage)
 {
-    acVoltage = _acVoltage;
+    ac_voltage = _ac_voltage;
 }
 
-Complex Resistor::getACVoltage() const
+Complex Resistor::GetACVoltage() const
 {
-    return acVoltage;
+    return ac_voltage;
 }
 
-void Resistor::setACCurrent(Complex _acCurrent)
+void Resistor::SetACCurrent(Complex _ac_current)
 {
-    acCurrent = _acCurrent;
+    ac_current = _ac_current;
 }
 
-Complex Resistor::getACCurrent() const
+Complex Resistor::GetACCurrent() const
 {
-    return acCurrent;
+    return ac_current;
 }

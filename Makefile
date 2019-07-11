@@ -5,13 +5,13 @@ TARGET = lark
 SRC_DIR = ./src
 
 INC_PATH = -I$(SRC_DIR)/include\
-		   -I$(SRC_DIR)/include/util\
-		   -I$(SRC_DIR)/include/parser\
-		   -I$(SRC_DIR)/include/analyser\
-		   -I$(SRC_DIR)/include/circuit\
+		   -I$(SRC_DIR)/util\
 		   -I$(SRC_DIR)/parser\
-		   -I$(SRC_DIR)/include/device\
-		   -I$(SRC_DIR)/include/device/resistor
+		   -I$(SRC_DIR)/analyser\
+		   -I$(SRC_DIR)/circuit\
+		   -I$(SRC_DIR)/parser\
+		   -I$(SRC_DIR)/device\
+		   -I$(SRC_DIR)/device/resistor
 
 LIB_PATH = 
 
@@ -27,7 +27,7 @@ VPATH = $(SRC_DIR):\
 
 SRCS = $(foreach dir, $(subst :, , $(VPATH)), $(wildcard $(dir)/*.cpp))
 
-OBJ_DIR = $(SRC_DIR)/build
+OBJ_DIR = ./build
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(notdir $(subst .cpp,.o, $(SRCS))))
 

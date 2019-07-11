@@ -18,6 +18,13 @@ Bison version: 3.2+ </br>
 `./lark netlist`
 ### Clean
 `./Make.sh clean`
+## Rules
+1. variable name: _xxx_yyy </br>
+2. function name: XxxYyy </br>
+3. C++ file: Xxx.cpp </br>
+4. directory name: xxx </br>
+5. class name: XxxYyy </br>
+6. formal parameter name: _xxx_yyy </br>
 ## How to contribute
 1. fork `msda-lab/Lark`
 2. `git clone git@github.com:yourname/Lark.git`

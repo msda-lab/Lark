@@ -1,8 +1,8 @@
 #include "Analyser.h"
 
-Analyser::Analyser(const string &name)
+Analyser::Analyser(const string &_name)
 {
-    ckt = new Circuit(name);
+    ckt = new Circuit(_name);
 }
 
 Analyser::~Analyser()
@@ -10,34 +10,34 @@ Analyser::~Analyser()
 
 }
 
-void Analyser::parseDCAnalysis(const string &src, double start, double end, double incr)
+void Analyser::ParseDCAnalysis(const string &_src, double _start, double _end, double _incr)
 {
-    cout << "DC analysis: src is " << src << " start=" << start << " end=" << end << " incr=" << incr << endl;
+    cout << "DC analysis: src is " << _src << " start=" << _start << " end=" << _end << " incr=" << _incr << endl;
 }
 
-void Analyser::parseDCAnalysis(const string &src1, double start1, double end1, double incr1,
-                               const string &src2, double start2, double end2, double incr2)
+void Analyser::ParseDCAnalysis(const string &_src1, double _start1, double _end1, double _incr1,
+                               const string &_src2, double _start2, double _end2, double _incr2)
 {
 
 }
 
-void Analyser::parsePrint(int anaType, const map<int, string> &output)
+void Analyser::ParsePrint(int _anaType, const map<int, string> &_output)
 {
-    displayAnalysis(anaType, output);
+    DisplayAnalysis(_anaType, _output);
 }
 
-void Analyser::parsePlot(int anaType, const map<int, string> &output)
+void Analyser::ParsePlot(int _anaType, const map<int, string> &_output)
 {
-    displayAnalysis(anaType, output);
+    DisplayAnalysis(_anaType, _output);
 }
 
-Circuit *Analyser::getCktPtr() const
+Circuit *Analyser::GetCktPtr() const
 {
     return ckt;
 }
 
 
-void Analyser::analyse()
+void Analyser::Analyse()
 {
 
 }

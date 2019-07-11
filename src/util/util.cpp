@@ -1,6 +1,6 @@
-#include "util.h"
+#include "Util.h"
 
-double str2val(char *s)
+double Str2Val(char *s)
 {
     double value;
     value = atof(s);
@@ -28,12 +28,12 @@ double str2val(char *s)
     return value;
 }
 
-void displayAnalysis(int anaType, const map<int, string> &output)
+void DisplayAnalysis(int _anaType, const map<int, string> &_output)
 {
     cout << "----------------------------------------------------" << endl;
     cout << "Analysis Task List" << endl;
     
-    switch(anaType)
+    switch(_anaType)
     {
         case DC_TYPE: cout << "Type: DC" << endl; break;
         case AC_TYPE: cout << "Type: AC" << endl; break;
@@ -41,7 +41,7 @@ void displayAnalysis(int anaType, const map<int, string> &output)
         default: cout << "Type: Unknown" << endl; break;
     }
 
-    for(auto pos = output.cbegin(); pos != output.cend(); ++ pos)
+    for(auto pos = _output.cbegin(); pos != _output.cend(); ++ pos)
     {
         int type = pos->first;
         string task = pos->second;

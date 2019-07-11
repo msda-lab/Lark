@@ -8,7 +8,7 @@
 
     #include "Analyser.h"
     #include "Parser.hpp"
-    #include "util.h"
+    #include "Util.h"
 
     #define YY_DECL int yylex(yy::Parser::semantic_type *yylval, yy::Parser::location_type *yylloc)
     #define YY_USER_ACTION yylloc->columns(yyleng);
@@ -88,7 +88,7 @@ END             [\.][Ee][Nn][Dd][Ss]?
                 strcpy(yylval->s, yytext);
                 yylval->s[strlen(yytext)] = '\0';
                 return token::VSOURCE;}
-{VALUE}         {yylval->f = str2val(yytext);
+{VALUE}         {yylval->f = Str2Val(yytext);
                 return token::VALUE;}
 
 {COMMENT}       {}
