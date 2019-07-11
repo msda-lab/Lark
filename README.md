@@ -37,3 +37,5 @@ Bison version: 3.2+ </br>
 2. `git branch -a`
 3. `git checkout branch`
 4. other `merge` operations.
+## Commit tags
+`add`, `delete`, `update`, `fix`
