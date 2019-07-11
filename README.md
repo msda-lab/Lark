@@ -19,5 +19,3 @@ Mixed-Signal Design Automation Tool.
 2. `git branch -a`
 3. `git checkout branch`
 4. other `merge` operations.
-5. haha
-## Another day
