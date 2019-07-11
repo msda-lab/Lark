@@ -6,7 +6,7 @@
 %define api.parser.class {Parser}
 
 %{
-    /*********** parser for Lark using bison **************/
+    /*********** Parser for Lark using bison **************/
     #include <stdio.h>
     #include <stdlib.h>
 
@@ -15,7 +15,7 @@
     #include <map>
 
     #include "Analyser.h"
-    #include "GlobalDef.h"
+    #include "Global.h"
 
     extern FILE *yyin;
 
@@ -104,62 +104,62 @@ output: print
 
 resistor: RESISTOR node node value
         {
-            analyser->getCktPtr()->parseRes($1, $2, $3, $4);
+            analyser->GetCktPtr()->ParseRes($1, $2, $3, $4);
         }
 ;
 
 capacitor: CAPACITOR node node value
         {
-           analyser->getCktPtr()->parseCap($1, $2, $3, $4);
+           analyser->GetCktPtr()->ParseCap($1, $2, $3, $4);
         }
 ;
 
 inductor: INDUCTOR node node value
         {
-            analyser->getCktPtr()->parseInd($1, $2, $3, $4);
+            analyser->GetCktPtr()->ParseInd($1, $2, $3, $4);
         }
 ;
 
 vsource: VSOURCE node node DC value
        {
-           analyser->getCktPtr()->parseVSource($1, $2, $3, $5);
+           analyser->GetCktPtr()->ParseVSource($1, $2, $3, $5);
        }
        | VSOURCE node node value
        {
-           analyser->getCktPtr()->parseVSource($1, $2, $3, $4);
+           analyser->GetCktPtr()->ParseVSource($1, $2, $3, $4);
        }
 ;
 
 isource: ISOURCE node node DC value
        {
-           analyser->getCktPtr()->parseISource($1, $2, $3, $5);
+           analyser->GetCktPtr()->ParseISource($1, $2, $3, $5);
        }
        | ISOURCE node node value
        {
-           analyser->getCktPtr()->parseISource($1, $2, $3, $4);
+           analyser->GetCktPtr()->ParseISource($1, $2, $3, $4);
        }
 ;
 
 dc: DOT_DC VSOURCE value value value
   {
-      analyser->parseDCAnalysis($2, $3, $4, $5);
+      analyser->ParseDCAnalysis($2, $3, $4, $5);
   }
   | DOT_DC VSOURCE value value value VSOURCE value value value
   {
-      analyser->parseDCAnalysis($2, $3, $4, $5, $6, $7, $8, $9);
+      analyser->ParseDCAnalysis($2, $3, $4, $5, $6, $7, $8, $9);
   }
 ;
 
 print: DOT_PRINT DC dc_output
      {
-         analyser->parsePrint(DC_TYPE, outList);
+         analyser->ParsePrint(DC_TYPE, outList);
          outList.clear();
      }
 ;
 
 plot: DOT_PLOT DC dc_output
     {
-        analyser->parsePlot(DC_TYPE, outList);
+        analyser->ParsePlot(DC_TYPE, outList);
         outList.clear();
     }
 ;

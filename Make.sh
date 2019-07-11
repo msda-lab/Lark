@@ -6,8 +6,15 @@ argc=$#
 SRC_DIR="./src"
 PARSER_DIR="${SRC_DIR}/parser"
 
+BUILD_DIR="./build"
+
 function make_all
 {
+    if [ ! -d $BUILD_DIR ]
+    then
+        mkdir $BUILD_DIR
+    fi
+
     cd ${PARSER_DIR} && make && cd -
     make
 }

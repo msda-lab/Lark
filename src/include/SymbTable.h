@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <string>
-#include "GlobalDef.h"
+#include "Global.h"
 
 using std::string;
 using std::cout;
