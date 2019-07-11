@@ -1,5 +1,23 @@
 # Lark
 Mixed-Signal Design Automation Tool.
+## Introduction
+**Lark** is a C/C++ based simulator. **Lark** supports basic simulation task and reduction algorithm. It can also plot MNA matrix and simulation result. In the part of parser, we use flex & bison to parse netlist. This project is for EDA research purpose and we will improve it for a long time.
+## Parser
+flex & bison
+## Plot library
+## Reduction algorithm
+## Solver
+## Environment
+Platform: MacOS 10.14 </br>
+Compiler: clang++ 11.0.0 </br>
+Bison version: 3.2+ </br>
+## How to use
+### Compile & Run
+`cd ./Lark` </br>
+`./Make.sh` </br>
+`./lark netlist`
+### Clean
+`./Make.sh clean`
 ## How to contribute
 1. fork `msda-lab/Lark`
 2. `git clone git@github.com:yourname/Lark.git`
