@@ -33,7 +33,19 @@ void Circuit::ParseRes(const string &_name, const string &_n1, const string &_n2
 
 void Circuit::ParseCap(const string &_name, const string &_n1, const string &_n2, double _c)
 {
-    cout << "Cap " << _name << ": n1=" << _n1 << " n2=" << _n2 << " value=" << _c << endl;
+    // cout << "Cap " << _name << ": n1=" << _n1 << " n2=" << _n2 << " value=" << _c << endl;
+    bool is_exist = device_table->Contains(_name);
+    if(!is_exist)
+    {
+        Node *n1 = GetParseNode(_n1);
+        Node *n2 = GetParseNode(_n2);
+        Capacitor *cap = new Capacitor(_name, n1, n2, _c);
+        device_table->Insert(_name, cap);
+    }
+    else
+    {
+        cout << "[ERROR! Redifine capacitor of " << _name << "]" << endl;
+    }
 
 }
 
@@ -75,4 +87,15 @@ Node* Circuit::GetParseNode(const string &_name)
         node_table->Insert(_name, node);
     }
     return node;
+}
+
+
+void Circuit::PrintAllDevice() const
+{
+    device_table->Print();
+}
+
+void Circuit::PrintAllNode() const
+{
+    node_table->Print();
 }

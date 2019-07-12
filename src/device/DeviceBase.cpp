@@ -37,20 +37,6 @@ bool Device::Equal(const string &_name, Device *_dev)
     return _name == _dev->name;
 }
 
-void Device::Setup()
-{
-    SetupDC();
-    // SetupAC();
-    // SetuoTRAN();
-}
-
-void Device::Load()
-{
-    LoadDC();
-    // LoadAC();
-    // LoadTRAN();
-
-}
 
 /***************************Node class********************** */
 

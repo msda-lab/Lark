@@ -39,6 +39,9 @@ int main(int argc, char *argv[])
 	Analyser *analyser = new Analyser(fileName);
 	yy::Parser parser(analyser);
 	parser.parse();
+
+    analyser->GetCktPtr()->PrintAllDevice();
+    analyser->GetCktPtr()->PrintAllNode();
 	
 	if(!yyin)
 		fclose(yyin);

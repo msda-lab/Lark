@@ -14,6 +14,11 @@ Resistor::~Resistor()
 
 }
 
+void Resistor::Setup()
+{
+
+}
+
 void Resistor::SetupDC()
 {
 
@@ -27,6 +32,11 @@ void Resistor::SetupAC()
 void Resistor::SetupTRAN()
 {
 
+}
+
+void Resistor::Load()
+{
+    
 }
 
 void Resistor::LoadDC()

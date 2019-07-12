@@ -5,8 +5,8 @@ INC_PATH = -I$(SRC_DIR)/include\
 		   -I$(SRC_DIR)/analyser\
            -I$(SRC_DIR)/util
 
-#CXX = clang++
-CXX = g++
+CXX = clang++
+#CXX = g++
 CXXFLAGS = -w -g -std=c++11 $(INC_PATH)
 
 FLEX = flex

@@ -22,16 +22,8 @@ class Device
 
         static bool Equal(const string &_name, Device *_dev);
 
-        void Setup();
-        void Load();
-
-        virtual void SetupDC() = 0;
-        virtual void SetupAC() = 0;
-        virtual void SetupTRAN() = 0;
-
-        virtual void LoadDC() = 0;
-        virtual void LoadAC() = 0;
-        virtual void LoadTRAN() = 0;
+        virtual void Setup() = 0;
+        virtual void Load() = 0;
 
     private: 
         string name;
