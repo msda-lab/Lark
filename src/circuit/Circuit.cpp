@@ -55,10 +55,26 @@ void Circuit::ParseInd(const string &_name, const string &_n1, const string &_n2
 
 }
 
-void Circuit::ParseVSource(const string &_name, const string &_n1, const string &_n2, double _dc)
+void Circuit::ParseVSource(const string &_name, const string &_n1, const string &_n2, double _dc, Complex _ac)
 {
-    cout << "VSource name=" << _name << " n1=" << _n1 << " n2=" << _n2 << " dc=" << _dc << endl;
+    // cout << "VSource name=" << _name << " n1=" << _n1 << " n2=" << _n2 << " dc=" << _dc << endl;
+    bool is_exist = device_table->Contains(_name);
+    if(!is_exist)
+    {
+        Node *n1 = GetParseNode(_n1);
+        Node *n2 = GetParseNode(_n2);
+        VSource *vsrc = new VSource(_name, n1, n2);
+        vsrc->SetDCValue(_dc);
+        vsrc->SetACValue(_ac);
+        device_table->Insert(_name, vsrc);
+    }
+    else
+    {
+        cout << "[ERROR! Redifine voltage source of " << _name << "]" << endl;
+    }
+
 }
+
 
 void Circuit::ParseISource(const string &_name, const string &_n1, const string &_n2, double _dc)
 {

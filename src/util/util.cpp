@@ -1,5 +1,7 @@
 #include "Util.h"
 
+#include <cmath>
+
 double Str2Val(char *s)
 {
     double value;
@@ -56,4 +58,12 @@ void DisplayAnalysis(int _anaType, const map<int, string> &_output)
         cout << task << endl;
     }
     cout << "----------------------------------------------------" << endl;
+}
+
+Complex GetComplexValue(double _mag, double _phase)
+{
+    double real = _mag * cos(_phase * PI / 180); // _phase is degree
+    double img = _mag * sin(_phase * PI / 180);
+    Complex complex_value(real, img);
+    return complex_value;
 }

@@ -20,4 +20,6 @@ double Str2Val(char *s);
 
 void DisplayAnalysis(int anaType, const map<int, string> &_output);
 
+Complex GetComplexValue(double _mag, double _phase);
+
 #endif

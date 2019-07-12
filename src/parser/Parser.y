@@ -122,11 +122,11 @@ inductor: INDUCTOR node node value
 
 vsource: VSOURCE node node DC value
        {
-           analyser->GetCktPtr()->ParseVSource($1, $2, $3, $5);
+           analyser->GetCktPtr()->ParseVSource($1, $2, $3, $5, 0);
        }
        | VSOURCE node node value
        {
-           analyser->GetCktPtr()->ParseVSource($1, $2, $3, $4);
+           analyser->GetCktPtr()->ParseVSource($1, $2, $3, $4, 0);
        }
 ;
 

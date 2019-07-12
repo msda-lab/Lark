@@ -35,5 +35,8 @@ const int NORMAL_TYPE = 3001;
 // used by AC simulation.
 typedef std::complex<double> Complex;
 
+// used by calculating complex value
+const double PI = 3.141592653;
+
 
 #endif //GLOBAL_DEF_H

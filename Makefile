@@ -12,7 +12,8 @@ INC_PATH = -I$(SRC_DIR)/include\
 		   -I$(SRC_DIR)/parser\
 		   -I$(SRC_DIR)/device\
 		   -I$(SRC_DIR)/device/resistor\
-		   -I$(SRC_DIR)/device/capacitor
+		   -I$(SRC_DIR)/device/capacitor\
+		   -I$(SRC_DIR)/device/vsource
 
 LIB_PATH = 
 
@@ -25,7 +26,8 @@ VPATH = $(SRC_DIR):\
 		$(SRC_DIR)/util:\
 		$(SRC_DIR)/device:\
 		$(SRC_DIR)/device/resistor:\
-		$(SRC_DIR)/device/capacitor:
+		$(SRC_DIR)/device/capacitor:\
+		$(SRC_DIR)/device/vsource:
 
 SRCS = $(foreach dir, $(subst :, , $(VPATH)), $(wildcard $(dir)/*.cpp))
 
