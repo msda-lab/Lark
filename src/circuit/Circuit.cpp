@@ -3,8 +3,10 @@
 Circuit::Circuit(const string &_name)
 {
     name = _name;
+    node_count = 0;
+    has_gnd = false;
     node_table = new SymbTable<string, Node*>(&HashFunctions::StringHash, &Node::Equal);
-    // deviceTable = new SymbTable<string, Device*>(&HashFunctions::StringHash, &Device::Equal);
+    device_table = new SymbTable<string, Device*>(&HashFunctions::StringHash, &Device::Equal);
 }
 
 Circuit::~Circuit()
@@ -14,8 +16,19 @@ Circuit::~Circuit()
 
 void Circuit::ParseRes(const string &_name, const string &_n1, const string &_n2, double _r)
 {
-    cout << "Res " << _name << ": n1=" << _n1 << " n2=" << _n2 << " value=" << _r << endl;
-
+    // cout << "Res " << _name << ": n1=" << _n1 << " n2=" << _n2 << " value=" << _r << endl;
+    bool is_exist = device_table->Contains(_name);
+    if(!is_exist)
+    {
+        Node *n1 = GetParseNode(_n1);
+        Node *n2 = GetParseNode(_n2);
+        Resistor *res = new Resistor(_name, n1, n2, _r);
+        device_table->Insert(_name, res);
+    }
+    else
+    {
+        cout << "[ERROR! Redifine resistor of " << _name << "]" << endl;
+    }
 }
 
 void Circuit::ParseCap(const string &_name, const string &_n1, const string &_n2, double _c)
@@ -40,7 +53,26 @@ void Circuit::ParseISource(const string &_name, const string &_n1, const string 
     cout << "ISource name=" << _name << " n1=" << _n1 << " n2=" << _n2 << " dc=" << _dc << endl;
 }
 
-void Circuit::ParseNode(const string &_name)
+Node* Circuit::GetParseNode(const string &_name)
 {
 
+    Node *node = (Node*)node_table->Find(_name);
+    if(node == NULL)
+    {
+        if(_name == "GND" || _name == "gnd" || _name == "0")
+        {
+            has_gnd = true;
+            node = new Node(_name);
+            node->SetType(GND_TYPE);
+            node->SetLocation(0);
+        }
+        else{
+            node = new Node(_name);
+            node->SetType(NORMAL_TYPE);
+            ++ node_count;
+            node->SetLocation(node_count);
+        }
+        node_table->Insert(_name, node);
+    }
+    return node;
 }

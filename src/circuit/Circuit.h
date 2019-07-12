@@ -5,7 +5,7 @@
 #include <string>
 
 #include "SymbTable.h"
-#include "DeviceBase.h"
+#include "Devices.h"
 
 using std::string;
 using std::cout;
@@ -24,13 +24,15 @@ class Circuit
         void ParseInd(const string &_name, const string &_n1, const string &_n2, double _l);
         void ParseVSource(const string &_name, const string &_n1, const string &_n2, double _dc);
         void ParseISource(const string &_name, const string &_n1, const string &_n2, double _dc);
-        void ParseNode(const string &_name);
+        Node* GetParseNode(const string &_name);
     
     private: 
         SymbTable<string, Node*> *node_table;
-        //SymbTable<string, Device*> *device_table;
+        SymbTable<string, Device*> *device_table;
 
         string name;
+        bool has_gnd;
+        long int node_count;
         
 };
 

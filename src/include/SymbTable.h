@@ -135,7 +135,7 @@ void SymbTable<K, V>::Insert(const K &key, const V value)
 {
     if(!Contains(key))
     {
-        unsigned int hash = Hash(key)  (len - 1);
+        unsigned int hash = Hash(key) % len;
         E *ptr = new E(key, value);
         ptr->next = table[hash];
         table[hash] = ptr;
@@ -153,27 +153,27 @@ void SymbTable<K, V>::Insert(const K &key, const V value)
 template <class K, class V>
 V SymbTable<K, V>::Find(const K &key) const
 {
-    unsigned int hash = Hash(key)  (len - 1);
+    unsigned int hash = Hash(key) % len;
     E *ptr = table[hash];
 
     while(ptr)
     {
-        if(Equal(key, ptr->key))
+        if(Equal(key, ptr->value))
             return ptr->value;
         ptr = ptr->next;
     }
-    return V(); // need no args constructor.
+    return NULL;
 }
 
 
 template <class K, class V>
 void SymbTable<K, V>::Delete(const K &key)
 {
-    unsigned int hash = Hash(key)  (len - 1);
+    unsigned int hash = Hash(key) % len;
     E *head = table[hash];
     if(head)
     {
-        if(Equal(key, head->key))
+        if(Equal(key, head->value))
         {
             table[hash] = head->next;
             delete head;
@@ -202,11 +202,11 @@ void SymbTable<K, V>::Delete(const K &key)
 template<class K, class V>
 void SymbTable<K, V>::Update(const K &key, const V value)
 {
-    unsigned int hash = Hash(key)  (len - 1);
+    unsigned int hash = Hash(key) % len;
     E *head = table[hash];
     while(head)
     {
-        if(Equal(key, head->key))
+        if(Equal(key, head->value))
         {
             head->value = value;
             break;
@@ -220,11 +220,11 @@ void SymbTable<K, V>::Update(const K &key, const V value)
 template<class K, class V>
 bool SymbTable<K, V>::Contains(const K &key) const
 {
-    unsigned int hash = Hash(key)  (len - 1);
+    unsigned int hash = Hash(key) % len;
     E *head = table[hash];
     while(head)
     {
-        if(Equal(key, head->key))
+        if(Equal(key, head->value))
             return true;
         head = head->next;
     }

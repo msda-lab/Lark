@@ -6,6 +6,7 @@ Resistor::Resistor(const string &_name, Node *_n1, Node *_n2, double _r)
     r = _r;
     n1 = _n1;
     n2 = _n2;
+    SetType(RESISTOR_TYPE);
 }
 
 Resistor::~Resistor()

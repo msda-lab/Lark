@@ -12,12 +12,15 @@ class Device
 {
     public: 
         Device(const string &_name);
+        Device(const string &_name, int _type);
         ~Device();
     public: 
         void SetName(const string &_name);
         string GetName() const;
+        void SetType(int _type);
+        int GetType() const;
 
-        static bool Equal(const string &_name, const Device *_dev);
+        static bool Equal(const string &_name, Device *_dev);
 
         void Setup();
         void Load();
@@ -32,6 +35,7 @@ class Device
 
     private: 
         string name;
+        int type;
         
 
 };
@@ -43,18 +47,30 @@ class Node
         ~Node();
     public: 
         static bool Equal(const string &_name, Node *_node);
+
         void SetDCVoltage(double _dc);
         double GetDCVoltage() const;
+
         void SetACVoltage(Complex _ac);
         Complex GetACVoltage() const;
+
         void SetName(const string &_name);
         string GetName() const;
+
+        void SetType(int _type);
+        int GetType() const;
+
+        void SetLocation(int _location);
+        int GetLocation() const;
+
+
     
     private: 
         int location;
         double dc_voltage;
         Complex ac_voltage;
         string name;
+        int type;
 
 };
 

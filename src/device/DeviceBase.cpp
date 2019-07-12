@@ -22,7 +22,17 @@ string Device::GetName() const
     return name;
 }
 
-bool Device::Equal(const string &_name, const Device *_dev)
+void Device::SetType(int _type)
+{
+    type = _type;
+}
+
+int Device::GetType() const
+{
+    return type;
+}
+
+bool Device::Equal(const string &_name, Device *_dev)
 {
     return _name == _dev->name;
 }
@@ -88,4 +98,24 @@ void Node::SetName(const string &_name)
 
 string Node::GetName() const{
     return name;
+}
+
+void Node::SetType(int _type)
+{
+    type = _type;
+}
+
+int Node::GetType() const
+{
+    return type;
+}
+
+void Node::SetLocation(int _location)
+{
+    location = _location;
+}
+
+int Node::GetLocation() const
+{
+    return location;
 }
