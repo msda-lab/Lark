@@ -51,7 +51,7 @@ void PrintLicense()
 	cout << "\n" << endl;
 	cout << "******************************* Lark *******************************" << endl;
 	cout << "*   Lark is a SPICE-like circuit simulator for research purpose.   *" << endl;
-	cout << "*   Author: Hao Limin, Wu Yuntao. MSDA Lab in SJTU. Since 2019.07 *" << endl;
+	cout << "*   Author: Hao Limin, Wu Yuntao. MSDA Lab in SJTU. Since 2019.07  *" << endl;
 	cout << "*   Copyright (C) 2019, All rights reserved.                       *" << endl;
 	cout << "********************************************************************" << endl;
 	cout << "\n" << endl;

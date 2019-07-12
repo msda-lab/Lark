@@ -19,7 +19,7 @@ Bison version: 3.2+ </br>
 ### Clean
 `./Make.sh clean`
 ## Rules
-1. variable name: _xxx_yyy </br>
+1. variable name: xxx_yyy </br>
 2. function name: XxxYyy </br>
 3. C++ file: Xxx.cpp </br>
 4. directory name: xxx </br>
