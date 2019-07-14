@@ -132,11 +132,11 @@ vsource: VSOURCE node node DC value
 
 isource: ISOURCE node node DC value
        {
-           analyser->GetCktPtr()->ParseISource($1, $2, $3, $5);
+           analyser->GetCktPtr()->ParseISource($1, $2, $3, $5, 0);
        }
        | ISOURCE node node value
        {
-           analyser->GetCktPtr()->ParseISource($1, $2, $3, $4);
+           analyser->GetCktPtr()->ParseISource($1, $2, $3, $4, 0);
        }
 ;
 

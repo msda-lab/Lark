@@ -23,7 +23,7 @@ class Circuit
         void ParseCap(const string &_name, const string &_n1, const string &_n2, double _c);
         void ParseInd(const string &_name, const string &_n1, const string &_n2, double _l);
         void ParseVSource(const string &_name, const string &_n1, const string &_n2, double _dc, Complex _ac);
-        void ParseISource(const string &_name, const string &_n1, const string &_n2, double _dc);
+        void ParseISource(const string &_name, const string &_n1, const string &_n2, double _dc, Complex _ac);
         Node* GetParseNode(const string &_name);
 
         void PrintAllDevice() const;
