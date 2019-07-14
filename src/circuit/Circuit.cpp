@@ -76,9 +76,23 @@ void Circuit::ParseVSource(const string &_name, const string &_n1, const string 
 }
 
 
-void Circuit::ParseISource(const string &_name, const string &_n1, const string &_n2, double _dc)
+void Circuit::ParseISource(const string &_name, const string &_n1, const string &_n2, double _dc, Complex _ac)
 {
-    cout << "ISource name=" << _name << " n1=" << _n1 << " n2=" << _n2 << " dc=" << _dc << endl;
+    // cout << "ISource name=" << _name << " n1=" << _n1 << " n2=" << _n2 << " dc=" << _dc << endl;
+    bool is_exist = device_table->Contains(_name);
+    if(!is_exist)
+    {
+        Node *n1 = GetParseNode(_n1);
+        Node *n2 = GetParseNode(_n2);
+        ISource *isrc = new ISource(_name, n1, n2);
+        isrc->SetDCValue(_dc);
+        isrc->SetACValue(_ac);
+        device_table->Insert(_name, isrc);
+    }
+    else
+    {
+        cout << "[ERROR! Redifine current source of " << _name << "]" << endl;
+    }
 }
 
 Node* Circuit::GetParseNode(const string &_name)

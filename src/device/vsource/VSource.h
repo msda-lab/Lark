@@ -1,4 +1,5 @@
 #ifndef VSOURCE_H
+#define VSOURCE_H
 
 #include "DeviceBase.h"
 
@@ -32,5 +33,4 @@ class VSource : public Device
         Node *n2;
 };
 
-#define VSOURCE_H
 #endif // VSOURCE_H

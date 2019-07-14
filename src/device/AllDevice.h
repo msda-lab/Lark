@@ -5,5 +5,6 @@
 #include "Resistor.h"
 #include "Capacitor.h"
 #include "VSource.h"
+#include "ISource.h"
 
 #endif //DEVICES_H
