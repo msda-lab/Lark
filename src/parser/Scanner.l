@@ -6,7 +6,7 @@
     #include <stdlib.h>
     #include <string.h>
 
-    #include "Analyser.h"
+    #include "Manager.h"
     #include "Parser.hpp"
     #include "Util.h"
 

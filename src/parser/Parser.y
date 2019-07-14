@@ -14,7 +14,7 @@
     #include <string>
     #include <map>
 
-    #include "Analyser.h"
+    #include "Manager.h"
     #include "Global.h"
 
     extern FILE *yyin;
@@ -29,7 +29,7 @@
 %output "Parser.cpp"
 %verbose
 
-%parse-param {Analyser *analyser}
+%parse-param {Manager *manager}
 
 %union
 {
@@ -104,62 +104,62 @@ output: print
 
 resistor: RESISTOR node node value
         {
-            analyser->GetCktPtr()->ParseRes($1, $2, $3, $4);
+            manager->GetCktPtr()->ParseRes($1, $2, $3, $4);
         }
 ;
 
 capacitor: CAPACITOR node node value
         {
-           analyser->GetCktPtr()->ParseCap($1, $2, $3, $4);
+           manager->GetCktPtr()->ParseCap($1, $2, $3, $4);
         }
 ;
 
 inductor: INDUCTOR node node value
         {
-            analyser->GetCktPtr()->ParseInd($1, $2, $3, $4);
+            manager->GetCktPtr()->ParseInd($1, $2, $3, $4);
         }
 ;
 
 vsource: VSOURCE node node DC value
        {
-           analyser->GetCktPtr()->ParseVSource($1, $2, $3, $5, 0);
+           manager->GetCktPtr()->ParseVSource($1, $2, $3, $5, 0);
        }
        | VSOURCE node node value
        {
-           analyser->GetCktPtr()->ParseVSource($1, $2, $3, $4, 0);
+           manager->GetCktPtr()->ParseVSource($1, $2, $3, $4, 0);
        }
 ;
 
 isource: ISOURCE node node DC value
        {
-           analyser->GetCktPtr()->ParseISource($1, $2, $3, $5, 0);
+           manager->GetCktPtr()->ParseISource($1, $2, $3, $5, 0);
        }
        | ISOURCE node node value
        {
-           analyser->GetCktPtr()->ParseISource($1, $2, $3, $4, 0);
+           manager->GetCktPtr()->ParseISource($1, $2, $3, $4, 0);
        }
 ;
 
 dc: DOT_DC VSOURCE value value value
   {
-      analyser->ParseDCAnalysis($2, $3, $4, $5);
+      manager->ParseDCAnalysis($2, $3, $4, $5);
   }
   | DOT_DC VSOURCE value value value VSOURCE value value value
   {
-      analyser->ParseDCAnalysis($2, $3, $4, $5, $6, $7, $8, $9);
+      manager->ParseDCAnalysis($2, $3, $4, $5, $6, $7, $8, $9);
   }
 ;
 
 print: DOT_PRINT DC dc_output
      {
-         analyser->ParsePrint(DC_TYPE, outList);
+         manager->ParsePrint(DC_TYPE, outList);
          outList.clear();
      }
 ;
 
 plot: DOT_PLOT DC dc_output
     {
-        analyser->ParsePlot(DC_TYPE, outList);
+        manager->ParsePlot(DC_TYPE, outList);
         outList.clear();
     }
 ;
