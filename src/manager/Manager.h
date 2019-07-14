@@ -2,8 +2,8 @@
                      Top layer of the simulator
 **************************************************************************************/
 
-#ifndef ANALYSER_H
-#define ANALYSER_H
+#ifndef MANAGER_H
+#define MANAGER_H
 
 #include <iostream>
 #include <string>
@@ -17,11 +17,11 @@ using std::cout;
 using std::endl;
 using std::map;
 
-class Analyser
+class Manager
 {
     public:
-        Analyser(const string &_name);
-        ~Analyser();
+        Manager(const string &_name);
+        ~Manager();
 
     public: 
         void ParseDCAnalysis(const string &_src, double _start, double _end, double _incr);
@@ -35,4 +35,4 @@ class Analyser
         Circuit *ckt;
 };
 
-#endif // ANALYSER_H
+#endif // MANAGER_H

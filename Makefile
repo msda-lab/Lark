@@ -7,7 +7,7 @@ SRC_DIR = ./src
 INC_PATH = -I$(SRC_DIR)/include\
 		   -I$(SRC_DIR)/util\
 		   -I$(SRC_DIR)/parser\
-		   -I$(SRC_DIR)/analyser\
+		   -I$(SRC_DIR)/manager\
 		   -I$(SRC_DIR)/circuit\
 		   -I$(SRC_DIR)/parser\
 		   -I$(SRC_DIR)/device\
@@ -21,7 +21,7 @@ LIB_PATH =
 LIBS = 
 
 VPATH = $(SRC_DIR):\
-        $(SRC_DIR)/analyser:\
+        $(SRC_DIR)/manager:\
 		$(SRC_DIR)/circuit:\
 		$(SRC_DIR)/parser:\
 		$(SRC_DIR)/util:\

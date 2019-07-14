@@ -2,7 +2,7 @@
 SRC_DIR = ..
 
 INC_PATH = -I$(SRC_DIR)/include\
-		   -I$(SRC_DIR)/analyser\
+		   -I$(SRC_DIR)/manager\
            -I$(SRC_DIR)/util
 
 CXX = clang++

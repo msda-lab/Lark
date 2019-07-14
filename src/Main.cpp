@@ -3,7 +3,7 @@
 #include <iostream>
 #include <fstream>
 
-#include "Analyser.h"
+#include "Manager.h"
 #include "Parser.hpp"
 
 extern FILE *yyin;
@@ -36,12 +36,12 @@ int main(int argc, char *argv[])
 	}
 
 	string fileName = argv[1];
-	Analyser *analyser = new Analyser(fileName);
-	yy::Parser parser(analyser);
+	Manager *manager = new Manager(fileName);
+	yy::Parser parser(manager);
 	parser.parse();
 
-    analyser->GetCktPtr()->PrintAllDevice();
-    analyser->GetCktPtr()->PrintAllNode();
+    manager->GetCktPtr()->PrintAllDevice();
+    manager->GetCktPtr()->PrintAllNode();
 	
 	if(!yyin)
 		fclose(yyin);
