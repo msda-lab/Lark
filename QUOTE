@@ -1,3 +1,5 @@
+# vinto 190710
+
 Third Party Library :
 
 Matrix
@@ -8,3 +10,25 @@ Matrix
 
 Graph Partition
 1. METIS;
+
+# vinto 190715
+
+Ngspice Note:
+
+1. Structure
+1.1 frontend    : parser
+1.2 include     : headfile
+1.3 maths       : fourier transform .etc
+1.4 spicelib    : core
+1.4.1 analysis  :
+1.4.2 devices   :
+
+2. Parse
+2.1 deck    : netlist
+    card    : statement
+2.2 INPpas1 : .model / .lib
+    INPpas2 : device
+    INPpas3 : options
+2.3 setup   : once
+              alloc
+    load    : fill in matrix
