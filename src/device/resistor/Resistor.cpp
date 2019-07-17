@@ -29,7 +29,7 @@ void Resistor::SetupAC()
 
 }
 
-void Resistor::SetupTRAN()
+void Resistor::SetupTran()
 {
 
 }
@@ -49,7 +49,7 @@ void Resistor::LoadAC()
 
 }
 
-void Resistor::LoadTRAN()
+void Resistor::LoadTran()
 {
 
 }

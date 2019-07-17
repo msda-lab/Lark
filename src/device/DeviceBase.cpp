@@ -105,3 +105,30 @@ int Node::GetLocation() const
 {
     return location;
 }
+
+/********************** Model class **********************/
+Model::Model(const string &_model_type)
+{
+    model_type = _model_type;
+}
+
+Model::~Model()
+{
+
+}
+
+bool Model::Equal(const string &_model_type, Model *_model_ptr)
+{
+    return _model_type == _model_ptr->GetModelType();
+}
+
+string Model::GetModelType() const
+{
+    return model_type;
+}
+
+int Model::GetDeviceCount() const
+{
+    return device_count;
+}
+

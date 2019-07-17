@@ -24,7 +24,7 @@ void Capacitor::SetupAC()
 
 }
 
-void Capacitor::SetupTRAN()
+void Capacitor::SetupTran()
 {
 
 }
@@ -39,7 +39,7 @@ void Capacitor::LoadAC()
 
 }
 
-void Capacitor::LoadTRAN()
+void Capacitor::LoadTran()
 {
 
 }

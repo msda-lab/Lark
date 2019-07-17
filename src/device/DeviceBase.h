@@ -25,7 +25,7 @@ class Device
         virtual void Setup() = 0;
         virtual void Load() = 0;
 
-    private: 
+    protected: 
         string name;
         int type;
         
@@ -57,13 +57,35 @@ class Node
 
 
     
-    private: 
+    protected: 
         int location;
         double dc_voltage;
         Complex ac_voltage;
         string name;
         int type;
 
+};
+
+
+class Model
+{
+    public: 
+        Model(const string &_model_type);
+        ~Model();
+    
+    public: 
+        string GetModelType() const;
+        int GetDeviceCount() const;
+
+        static bool Equal(const string &_model_type, Model *_model_ptr);
+        
+        virtual void LoadDC() = 0;
+        virtual void LoadAC(double _omega) = 0;
+        virtual void LoadTran(double _t, double _h, bool _iter) = 0;
+
+    protected: 
+        string model_type;
+        int device_count;
 };
 
 #endif // DEVICE_BASE_H

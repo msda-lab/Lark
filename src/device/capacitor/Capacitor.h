@@ -12,11 +12,11 @@ class Capacitor : public Device
     public: 
         void Setup();
         void SetupAC();
-        void SetupTRAN();
+        void SetupTran();
 
         void Load();
         void LoadAC();
-        void LoadTRAN();
+        void LoadTran();
 
         void SetACVoltage(Complex _ac_voltage);
         Complex GetACVoltage() const;
