@@ -5,8 +5,11 @@
 #include "Resistor.h"
 #include "ResistorModel.h"
 #include "Capacitor.h"
+#include "CapacitorModel.h"
 #include "VSource.h"
+#include "VSourceModel.h"
 #include "ISource.h"
-#include "MosfetLevel1.h"
+#include "ISourceModel.h"
+//#include "MosfetLevel1.h"
 
 #endif //DEVICES_H
