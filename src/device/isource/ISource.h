@@ -13,12 +13,12 @@ class ISource : public Device
         void Setup();
         void SetupDC();
         void SetupAC();
-        void SetupTRAN();
+        void SetupTran();
 
         void Load();
         void LoadDC();
         void LoadAC();
-        void LoadTRAN();
+        void LoadTran();
 
         void SetDCValue(double _dc_value);
         double GetDCValue() const;

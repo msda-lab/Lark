@@ -30,7 +30,7 @@ void ISource::SetupAC()
 
 }
 
-void ISource::SetupTRAN()
+void ISource::SetupTran()
 {
 
 }
@@ -50,7 +50,7 @@ void ISource::LoadAC()
 
 }
 
-void ISource::LoadTRAN()
+void ISource::LoadTran()
 {
 
 }

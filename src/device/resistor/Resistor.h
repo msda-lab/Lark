@@ -12,12 +12,12 @@ class Resistor : public Device
         void Setup();
         void SetupDC();
         void SetupAC();
-        void SetupTRAN();
+        void SetupTran();
 
         void Load();
         void LoadDC();
         void LoadAC();
-        void LoadTRAN();
+        void LoadTran();
 
         void SetDCVoltage(double _dc_voltage);
         double GetDCVoltage() const;

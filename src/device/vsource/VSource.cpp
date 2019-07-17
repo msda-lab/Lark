@@ -29,7 +29,7 @@ void VSource::SetupAC()
 
 }
 
-void VSource::SetupTRAN()
+void VSource::SetupTran()
 {
 
 }
@@ -49,7 +49,7 @@ void VSource::LoadAC()
 
 }
 
-void VSource::LoadTRAN()
+void VSource::LoadTran()
 {
 
 }

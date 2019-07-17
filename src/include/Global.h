@@ -31,6 +31,13 @@ const int VSOURCE_TYPE = 2004;
 const int GND_TYPE = 3000;
 const int NORMAL_TYPE = 3001;
 
+// model type define
+const std::string RES_MODEL_TYPE = "RES";
+const std::string CAP_MODEL_TYPE = "CAP";
+const std::string IND_MODEL_TYPE = "IND";
+const std::string VSRC_MODEL_TYPE = "VSRC";
+const std::string ISRC_MODEL_TYPE = "ISRC";
+
 
 // used by AC simulation.
 typedef std::complex<double> Complex;
