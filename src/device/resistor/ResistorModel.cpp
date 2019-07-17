@@ -1,7 +1,5 @@
 #include "ResistorModel.h"
 
-#include "Global.h"
-
 ResistorModel::ResistorModel()
     : Model(RES_MODEL_TYPE)
 {

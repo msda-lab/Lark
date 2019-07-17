@@ -4,7 +4,7 @@
 #include "DeviceBase.h"
 #include "Resistor.h"
 
-#include "vector"
+#include <vector>
 
 using std::vector;
 
