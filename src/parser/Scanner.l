@@ -6,7 +6,7 @@
     #include <stdlib.h>
     #include <string.h>
 
-    #include "Manager.h"
+    #include "Simulator.h"
     #include "Parser.hpp"
     #include "Util.h"
 

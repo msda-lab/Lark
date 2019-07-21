@@ -3,7 +3,7 @@
 #include <iostream>
 #include <fstream>
 
-#include "Manager.h"
+#include "Simulator.h"
 #include "Parser.hpp"
 
 extern FILE *yyin;
@@ -36,12 +36,12 @@ int main(int argc, char *argv[])
 	}
 
 	string fileName = argv[1];
-	Manager *manager = new Manager(fileName);
-	yy::Parser parser(manager);
+	Simulator *simulator = new Simulator(fileName);
+	yy::Parser parser(simulator);
 	parser.parse();
 
-    manager->GetCktPtr()->PrintAllDevice();
-    manager->GetCktPtr()->PrintAllNode();
+    simulator->GetCktPtr()->PrintAllDevice();
+    simulator->GetCktPtr()->PrintAllNode();
 	
 	if(!yyin)
 		fclose(yyin);

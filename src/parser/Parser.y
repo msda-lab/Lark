@@ -14,7 +14,7 @@
     #include <string>
     #include <map>
 
-    #include "Manager.h"
+    #include "Simulator.h"
     #include "Global.h"
 
     extern FILE *yyin;
@@ -29,7 +29,7 @@
 %output "Parser.cpp"
 %verbose
 
-%parse-param {Manager *manager}
+%parse-param {Simulator *simulator}
 
 %union
 {
@@ -104,62 +104,62 @@ output: print
 
 resistor: RESISTOR node node value
         {
-            manager->GetCktPtr()->ParseRes($1, $2, $3, $4);
+            simulator->GetCktPtr()->ParseRes($1, $2, $3, $4);
         }
 ;
 
 capacitor: CAPACITOR node node value
         {
-           manager->GetCktPtr()->ParseCap($1, $2, $3, $4);
+           simulator->GetCktPtr()->ParseCap($1, $2, $3, $4);
         }
 ;
 
 inductor: INDUCTOR node node value
         {
-            manager->GetCktPtr()->ParseInd($1, $2, $3, $4);
+            simulator->GetCktPtr()->ParseInd($1, $2, $3, $4);
         }
 ;
 
 vsource: VSOURCE node node DC value
        {
-           manager->GetCktPtr()->ParseVSource($1, $2, $3, $5, 0);
+           simulator->GetCktPtr()->ParseVSource($1, $2, $3, $5, 0);
        }
        | VSOURCE node node value
        {
-           manager->GetCktPtr()->ParseVSource($1, $2, $3, $4, 0);
+           simulator->GetCktPtr()->ParseVSource($1, $2, $3, $4, 0);
        }
 ;
 
 isource: ISOURCE node node DC value
        {
-           manager->GetCktPtr()->ParseISource($1, $2, $3, $5, 0);
+           simulator->GetCktPtr()->ParseISource($1, $2, $3, $5, 0);
        }
        | ISOURCE node node value
        {
-           manager->GetCktPtr()->ParseISource($1, $2, $3, $4, 0);
+           simulator->GetCktPtr()->ParseISource($1, $2, $3, $4, 0);
        }
 ;
 
 dc: DOT_DC VSOURCE value value value
   {
-      manager->ParseDCAnalysis($2, $3, $4, $5);
+      simulator->ParseDCAnalysis($2, $3, $4, $5);
   }
   | DOT_DC VSOURCE value value value VSOURCE value value value
   {
-      manager->ParseDCAnalysis($2, $3, $4, $5, $6, $7, $8, $9);
+      simulator->ParseDCAnalysis($2, $3, $4, $5, $6, $7, $8, $9);
   }
 ;
 
 print: DOT_PRINT DC dc_output
      {
-         manager->ParsePrint(DC_TYPE, outList);
+         simulator->ParsePrint(DC_TYPE, outList);
          outList.clear();
      }
 ;
 
 plot: DOT_PLOT DC dc_output
     {
-        manager->ParsePlot(DC_TYPE, outList);
+        simulator->ParsePlot(DC_TYPE, outList);
         outList.clear();
     }
 ;

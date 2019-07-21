@@ -2,8 +2,8 @@
                      Top layer of the simulator
 **************************************************************************************/
 
-#ifndef MANAGER_H
-#define MANAGER_H
+#ifndef SIMULATOR_H
+#define SIMULATOR_H
 
 #include <iostream>
 #include <string>
@@ -17,11 +17,11 @@ using std::cout;
 using std::endl;
 using std::map;
 
-class Manager
+class Simulator
 {
     public:
-        Manager(const string &_name);
-        ~Manager();
+        Simulator(const string &_name);
+        ~Simulator();
 
     public: 
         void ParseDCAnalysis(const string &_src, double _start, double _end, double _incr);
@@ -29,10 +29,10 @@ class Manager
         void ParsePrint(int _anaType, const map<int, string> &_output);
         void ParsePlot(int _anaType, const map<int, string> &_output);
         Circuit *GetCktPtr() const;
-        void Analyse();
+        void Simulate();
     
     private:
         Circuit *ckt;
 };
 
-#endif // MANAGER_H
+#endif // SIMULATOR_H
