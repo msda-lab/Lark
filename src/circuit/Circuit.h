@@ -32,6 +32,7 @@ class Circuit
     private: 
         SymbTable<string, Node*> *node_table;
         SymbTable<string, Device*> *device_table;
+        SymbTable<string, Model*> *model_table;
 
         string name;
         bool has_gnd;

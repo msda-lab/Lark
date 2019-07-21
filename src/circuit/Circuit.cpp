@@ -7,6 +7,7 @@ Circuit::Circuit(const string &_name)
     has_gnd = false;
     node_table = new SymbTable<string, Node*>(&HashFunctions::StringHash, &Node::Equal);
     device_table = new SymbTable<string, Device*>(&HashFunctions::StringHash, &Device::Equal);
+    model_table = new SymbTable<string, Model*>(&HashFunctions::StringHash, &Model::Equal);
 }
 
 Circuit::~Circuit()
