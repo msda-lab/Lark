@@ -26,7 +26,7 @@ void VSourceModel::LoadTran(double _t, double _h, bool _iter)
 
 }
 
-void VSourceModel::AddVnst(VSource *_vsrc)
+void VSourceModel::AddInst(VSource *_vsrc)
 {
     vsrc_list.push_back(_vsrc);
     ++ device_count;

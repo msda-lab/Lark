@@ -42,6 +42,7 @@ int main(int argc, char *argv[])
 
     simulator->GetCktPtr()->PrintAllDevice();
     simulator->GetCktPtr()->PrintAllNode();
+    simulator->GetCktPtr()->PrintAllModel();
 	
 	if(!yyin)
 		fclose(yyin);

@@ -131,4 +131,3 @@ int Model::GetDeviceCount() const
 {
     return device_count;
 }
-

@@ -25,6 +25,14 @@ void Circuit::ParseRes(const string &_name, const string &_n1, const string &_n2
         Node *n2 = GetParseNode(_n2);
         Resistor *res = new Resistor(_name, n1, n2, _r);
         device_table->Insert(_name, res);
+
+        ResistorModel *res_model = (ResistorModel*)model_table->Find(RES_MODEL_TYPE);
+        if(res_model == NULL)
+        {
+            res_model = new ResistorModel();
+            model_table->Insert(RES_MODEL_TYPE, res_model);
+        }
+        res_model->AddInst(res);
     }
     else
     {
@@ -42,6 +50,14 @@ void Circuit::ParseCap(const string &_name, const string &_n1, const string &_n2
         Node *n2 = GetParseNode(_n2);
         Capacitor *cap = new Capacitor(_name, n1, n2, _c);
         device_table->Insert(_name, cap);
+
+        CapacitorModel *cap_model = (CapacitorModel*)model_table->Find(CAP_MODEL_TYPE);
+        if(cap_model == NULL)
+        {
+            cap_model = new CapacitorModel();
+            model_table->Insert(CAP_MODEL_TYPE, cap_model);
+        }
+        cap_model->AddInst(cap);
     }
     else
     {
@@ -68,6 +84,14 @@ void Circuit::ParseVSource(const string &_name, const string &_n1, const string 
         vsrc->SetDCValue(_dc);
         vsrc->SetACValue(_ac);
         device_table->Insert(_name, vsrc);
+
+        VSourceModel *vsrc_model = (VSourceModel*)model_table->Find(VSRC_MODEL_TYPE);
+        if(vsrc_model == NULL)
+        {
+            vsrc_model = new VSourceModel();
+            model_table->Insert(VSRC_MODEL_TYPE, vsrc_model);
+        }
+        vsrc_model->AddInst(vsrc);
     }
     else
     {
@@ -89,6 +113,14 @@ void Circuit::ParseISource(const string &_name, const string &_n1, const string 
         isrc->SetDCValue(_dc);
         isrc->SetACValue(_ac);
         device_table->Insert(_name, isrc);
+
+        ISourceModel *isrc_model = (ISourceModel*)model_table->Find(ISRC_MODEL_TYPE);
+        if(isrc_model == NULL)
+        {
+            isrc_model = new ISourceModel();
+            model_table->Insert(ISRC_MODEL_TYPE, isrc_model);
+        }
+        isrc_model->AddInst(isrc);
     }
     else
     {
@@ -120,7 +152,6 @@ Node* Circuit::GetParseNode(const string &_name)
     return node;
 }
 
-
 void Circuit::PrintAllDevice() const
 {
     device_table->Print();
@@ -129,4 +160,9 @@ void Circuit::PrintAllDevice() const
 void Circuit::PrintAllNode() const
 {
     node_table->Print();
+}
+
+void Circuit::PrintAllModel() const
+{
+    model_table->Print();
 }
