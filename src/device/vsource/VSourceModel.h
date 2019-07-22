@@ -19,7 +19,7 @@ class VSourceModel : public Model
         void LoadAC(double _omega);
         void LoadTran(double _t, double _h, bool _iter);
 
-        void AddVnst(VSource *_vsrc);
+        void AddInst(VSource *_vsrc);
     private: 
         vector<VSource*> vsrc_list;
 };

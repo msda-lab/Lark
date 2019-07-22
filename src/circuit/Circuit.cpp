@@ -12,12 +12,16 @@ Circuit::Circuit(const string &_name)
 
 Circuit::~Circuit()
 {
-
+    if(node_table)
+        delete node_table;
+    if(device_table)
+        delete device_table;
+    if(node_table)
+        delete node_table;
 }
 
 void Circuit::ParseRes(const string &_name, const string &_n1, const string &_n2, double _r)
 {
-    // cout << "Res " << _name << ": n1=" << _n1 << " n2=" << _n2 << " value=" << _r << endl;
     bool is_exist = device_table->Contains(_name);
     if(!is_exist)
     {
@@ -25,6 +29,14 @@ void Circuit::ParseRes(const string &_name, const string &_n1, const string &_n2
         Node *n2 = GetParseNode(_n2);
         Resistor *res = new Resistor(_name, n1, n2, _r);
         device_table->Insert(_name, res);
+
+        ResistorModel *res_model = (ResistorModel*)model_table->Find(RES_MODEL_TYPE);
+        if(res_model == NULL)
+        {
+            res_model = new ResistorModel();
+            model_table->Insert(RES_MODEL_TYPE, res_model);
+        }
+        res_model->AddInst(res);
     }
     else
     {
@@ -34,7 +46,6 @@ void Circuit::ParseRes(const string &_name, const string &_n1, const string &_n2
 
 void Circuit::ParseCap(const string &_name, const string &_n1, const string &_n2, double _c)
 {
-    // cout << "Cap " << _name << ": n1=" << _n1 << " n2=" << _n2 << " value=" << _c << endl;
     bool is_exist = device_table->Contains(_name);
     if(!is_exist)
     {
@@ -42,6 +53,14 @@ void Circuit::ParseCap(const string &_name, const string &_n1, const string &_n2
         Node *n2 = GetParseNode(_n2);
         Capacitor *cap = new Capacitor(_name, n1, n2, _c);
         device_table->Insert(_name, cap);
+
+        CapacitorModel *cap_model = (CapacitorModel*)model_table->Find(CAP_MODEL_TYPE);
+        if(cap_model == NULL)
+        {
+            cap_model = new CapacitorModel();
+            model_table->Insert(CAP_MODEL_TYPE, cap_model);
+        }
+        cap_model->AddInst(cap);
     }
     else
     {
@@ -58,7 +77,6 @@ void Circuit::ParseInd(const string &_name, const string &_n1, const string &_n2
 
 void Circuit::ParseVSource(const string &_name, const string &_n1, const string &_n2, double _dc, Complex _ac)
 {
-    // cout << "VSource name=" << _name << " n1=" << _n1 << " n2=" << _n2 << " dc=" << _dc << endl;
     bool is_exist = device_table->Contains(_name);
     if(!is_exist)
     {
@@ -68,6 +86,14 @@ void Circuit::ParseVSource(const string &_name, const string &_n1, const string 
         vsrc->SetDCValue(_dc);
         vsrc->SetACValue(_ac);
         device_table->Insert(_name, vsrc);
+
+        VSourceModel *vsrc_model = (VSourceModel*)model_table->Find(VSRC_MODEL_TYPE);
+        if(vsrc_model == NULL)
+        {
+            vsrc_model = new VSourceModel();
+            model_table->Insert(VSRC_MODEL_TYPE, vsrc_model);
+        }
+        vsrc_model->AddInst(vsrc);
     }
     else
     {
@@ -79,7 +105,6 @@ void Circuit::ParseVSource(const string &_name, const string &_n1, const string 
 
 void Circuit::ParseISource(const string &_name, const string &_n1, const string &_n2, double _dc, Complex _ac)
 {
-    // cout << "ISource name=" << _name << " n1=" << _n1 << " n2=" << _n2 << " dc=" << _dc << endl;
     bool is_exist = device_table->Contains(_name);
     if(!is_exist)
     {
@@ -89,6 +114,14 @@ void Circuit::ParseISource(const string &_name, const string &_n1, const string 
         isrc->SetDCValue(_dc);
         isrc->SetACValue(_ac);
         device_table->Insert(_name, isrc);
+
+        ISourceModel *isrc_model = (ISourceModel*)model_table->Find(ISRC_MODEL_TYPE);
+        if(isrc_model == NULL)
+        {
+            isrc_model = new ISourceModel();
+            model_table->Insert(ISRC_MODEL_TYPE, isrc_model);
+        }
+        isrc_model->AddInst(isrc);
     }
     else
     {
@@ -120,6 +153,47 @@ Node* Circuit::GetParseNode(const string &_name)
     return node;
 }
 
+Device *Circuit::GetDevice(const string &_name) const
+{
+    Device *device = (Device*)device_table->Find(_name);
+    if(device == NULL)
+    {
+        cout << "Cannot find " << _name << endl;
+    }
+    return device;
+
+}
+
+void Circuit::LoadSweepDC(Device *_src, double _src_value)
+{
+
+}
+
+void Circuit::LoadDC()
+{
+
+}
+
+void Circuit::Setup(int _analysis_type)
+{
+    
+
+}
+
+void Circuit::Reset()
+{
+
+}
+
+void Circuit::ResetMatrix()
+{
+
+}
+
+void Circuit::ResetRHS()
+{
+
+}
 
 void Circuit::PrintAllDevice() const
 {
@@ -129,4 +203,9 @@ void Circuit::PrintAllDevice() const
 void Circuit::PrintAllNode() const
 {
     node_table->Print();
+}
+
+void Circuit::PrintAllModel() const
+{
+    model_table->Print();
 }

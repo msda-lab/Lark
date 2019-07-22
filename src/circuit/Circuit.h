@@ -24,10 +24,22 @@ class Circuit
         void ParseInd(const string &_name, const string &_n1, const string &_n2, double _l);
         void ParseVSource(const string &_name, const string &_n1, const string &_n2, double _dc, Complex _ac);
         void ParseISource(const string &_name, const string &_n1, const string &_n2, double _dc, Complex _ac);
+
         Node* GetParseNode(const string &_name);
+
+        Device *GetDevice(const string &_name) const;
+
+        void LoadSweepDC(Device *_src, double _src_value);
+        void LoadDC();
+
+        void Reset();
+        void ResetMatrix();
+        void ResetRHS();
+        void Setup(int _analysis_type);
 
         void PrintAllDevice() const;
         void PrintAllNode() const;
+        void PrintAllModel() const;
     
     private: 
         SymbTable<string, Node*> *node_table;

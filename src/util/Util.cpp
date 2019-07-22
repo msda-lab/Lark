@@ -37,9 +37,9 @@ void DisplayAnalysis(int _anaType, const map<int, string> &_output)
     
     switch(_anaType)
     {
-        case DC_TYPE: cout << "Type: DC" << endl; break;
-        case AC_TYPE: cout << "Type: AC" << endl; break;
-        case TRAN_TYPE: cout << "Type: TRAN" << endl; break;
+        case DC_ANALYSIS_TYPE: cout << "Type: DC" << endl; break;
+        case AC_ANALYSIS_TYPE: cout << "Type: AC" << endl; break;
+        case TRAN_ANALYSIS_TYPE: cout << "Type: TRAN" << endl; break;
         default: cout << "Type: Unknown" << endl; break;
     }
 

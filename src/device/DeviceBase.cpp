@@ -4,6 +4,7 @@
 
 Device::Device(const string &_name)
 {
+    name = _name;
 
 }
 
@@ -131,4 +132,3 @@ int Model::GetDeviceCount() const
 {
     return device_count;
 }
-

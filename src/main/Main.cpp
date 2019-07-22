@@ -40,8 +40,11 @@ int main(int argc, char *argv[])
 	yy::Parser parser(simulator);
 	parser.parse();
 
-    simulator->GetCktPtr()->PrintAllDevice();
-    simulator->GetCktPtr()->PrintAllNode();
+    //simulator->GetCktPtr()->PrintAllDevice();
+    //simulator->GetCktPtr()->PrintAllNode();
+    //simulator->GetCktPtr()->PrintAllModel();
+
+    simulator->Simulate();
 	
 	if(!yyin)
 		fclose(yyin);
