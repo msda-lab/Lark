@@ -27,6 +27,16 @@ class Circuit
 
         Node* GetParseNode(const string &_name);
 
+        Device *GetDevice(const string &_name) const;
+
+        void LoadSweepDC(Device *_src, double _src_value);
+        void LoadDC();
+
+        void Reset();
+        void ResetMatrix();
+        void ResetRHS();
+        void Setup(int _analysis_type);
+
         void PrintAllDevice() const;
         void PrintAllNode() const;
         void PrintAllModel() const;

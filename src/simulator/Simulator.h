@@ -8,14 +8,18 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <vector>
 
 #include "Circuit.h"
+#include "Analysis.h"
+#include "DCAnalysis.h"
 #include "Util.h"
 
 using std::string;
 using std::cout;
 using std::endl;
 using std::map;
+using std::vector;
 
 class Simulator
 {
@@ -28,11 +32,18 @@ class Simulator
         void ParseDCAnalysis(const string &_src1, double _start1, double _end1, double _incr1, const string &_src2, double _start2, double _end2, double _incr2);
         void ParsePrint(int _anaType, const map<int, string> &_output);
         void ParsePlot(int _anaType, const map<int, string> &_output);
+
         Circuit *GetCktPtr() const;
+
         void Simulate();
+
     
     private:
+        void AddAnalysisTask(Analysis *_analysis);
+
         Circuit *ckt;
+        vector<Analysis*> analysis_list;
+
 };
 
 #endif // SIMULATOR_H

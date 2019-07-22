@@ -15,14 +15,18 @@ INC_PATH = -I$(SRC_DIR)/include\
 		   -I$(SRC_DIR)/device/capacitor\
 		   -I$(SRC_DIR)/device/vsource\
 		   -I$(SRC_DIR)/device/isource\
-		   -I$(SRC_DIR)/matrix
+		   -I$(SRC_DIR)/matrix\
+		   -I$(SRC_DIR)/analysis\
+		   -I$(SRC_DIR)/analysis/dc\
+		   -I$(SRC_DIR)/analysis/ac\
+		   -I$(SRC_DIR)/analysis/tran
 		   #-I$(SRC_DIR)/device/mosfet/level1
 
 LIB_PATH = 
 
 LIBS = 
 
-VPATH = $(SRC_DIR):\
+VPATH = $(SRC_DIR)/main:\
         $(SRC_DIR)/simulator:\
 		$(SRC_DIR)/circuit:\
 		$(SRC_DIR)/parser:\
@@ -32,7 +36,12 @@ VPATH = $(SRC_DIR):\
 		$(SRC_DIR)/device/capacitor:\
 		$(SRC_DIR)/device/vsource:\
 		$(SRC_DIR)/device/isource:\
-		$(SRC_DIR)/matrix:
+		$(SRC_DIR)/matrix:\
+		$(SRC_DIR)/analysis:\
+		$(SRC_DIR)/analysis/dc:\
+		$(SRC_DIR)/analysis/ac:\
+		$(SRC_DIR)/analysis/tran:
+
 		#$(SRC_DIR)/device/mosfet/level1:
 		
 SRCS = $(foreach dir, $(subst :, , $(VPATH)), $(wildcard $(dir)/*.cpp))

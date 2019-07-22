@@ -11,9 +11,9 @@ const int MAX_LINKED_LIST = 8;
 
 
 // analysis type define
-const int DC_TYPE = 1000;
-const int AC_TYPE = 1001;
-const int TRAN_TYPE = 1002;
+const int DC_ANALYSIS_TYPE = 1000;
+const int AC_ANALYSIS_TYPE = 1001;
+const int TRAN_ANALYSIS_TYPE = 1002;
 const int V_TYPE = 1003;
 const int I_TYPE = 1004;
 const int VM_TYPE = 1005;

@@ -4,6 +4,7 @@
 
 Device::Device(const string &_name)
 {
+    name = _name;
 
 }
 

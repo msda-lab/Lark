@@ -39,7 +39,7 @@
 };
 
 %{
-    map<int, string> outList;
+    map<int, string> out_list;
 %}
 
 // %left '+' '-'
@@ -152,61 +152,61 @@ dc: DOT_DC VSOURCE value value value
 
 print: DOT_PRINT DC dc_output
      {
-         simulator->ParsePrint(DC_TYPE, outList);
-         outList.clear();
+         simulator->ParsePrint(DC_ANALYSIS_TYPE, out_list);
+         out_list.clear();
      }
 ;
 
 plot: DOT_PLOT DC dc_output
     {
-        simulator->ParsePlot(DC_TYPE, outList);
-        outList.clear();
+        simulator->ParsePlot(DC_ANALYSIS_TYPE, out_list);
+        out_list.clear();
     }
 ;
 
 dc_output: V LP node RP
           {
-              outList.insert(pair<int, string>(V_TYPE, $3));
+              out_list.insert(pair<int, string>(V_TYPE, $3));
           }
           | I LP node RP
           {
-              outList.insert(pair<int, string>(I_TYPE, $3));
+              out_list.insert(pair<int, string>(I_TYPE, $3));
           }
           | V LP node COMMA node RP
           {
               string out = $3;
               out += ",";
               out += $5;
-              outList.insert(pair<int, string>(V_TYPE, out));
+              out_list.insert(pair<int, string>(V_TYPE, out));
           }
           | I LP node COMMA node RP
           {
               string out = $3;
               out += ",";
               out += $5;
-              outList.insert(pair<int, string>(I_TYPE, out));
+              out_list.insert(pair<int, string>(I_TYPE, out));
           }  
           | dc_output V LP node RP
           {
-              outList.insert(pair<int, string>(V_TYPE, $4));
+              out_list.insert(pair<int, string>(V_TYPE, $4));
           }
           | dc_output I LP node RP
           {
-              outList.insert(pair<int, string>(I_TYPE, $4));
+              out_list.insert(pair<int, string>(I_TYPE, $4));
           }
           | dc_output V LP node COMMA node RP
           {
               string out = $4;
               out += ",";
               out += $6;
-              outList.insert(pair<int, string>(V_TYPE, out));
+              out_list.insert(pair<int, string>(V_TYPE, out));
           }
           | dc_output  I LP node COMMA node RP
           {
               string out = $4;
               out += ",";
               out += $6;
-              outList.insert(pair<int, string>(I_TYPE, out));
+              out_list.insert(pair<int, string>(I_TYPE, out));
           } 
 ;
 

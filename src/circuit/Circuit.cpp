@@ -12,12 +12,16 @@ Circuit::Circuit(const string &_name)
 
 Circuit::~Circuit()
 {
-
+    if(node_table)
+        delete node_table;
+    if(device_table)
+        delete device_table;
+    if(node_table)
+        delete node_table;
 }
 
 void Circuit::ParseRes(const string &_name, const string &_n1, const string &_n2, double _r)
 {
-    // cout << "Res " << _name << ": n1=" << _n1 << " n2=" << _n2 << " value=" << _r << endl;
     bool is_exist = device_table->Contains(_name);
     if(!is_exist)
     {
@@ -42,7 +46,6 @@ void Circuit::ParseRes(const string &_name, const string &_n1, const string &_n2
 
 void Circuit::ParseCap(const string &_name, const string &_n1, const string &_n2, double _c)
 {
-    // cout << "Cap " << _name << ": n1=" << _n1 << " n2=" << _n2 << " value=" << _c << endl;
     bool is_exist = device_table->Contains(_name);
     if(!is_exist)
     {
@@ -74,7 +77,6 @@ void Circuit::ParseInd(const string &_name, const string &_n1, const string &_n2
 
 void Circuit::ParseVSource(const string &_name, const string &_n1, const string &_n2, double _dc, Complex _ac)
 {
-    // cout << "VSource name=" << _name << " n1=" << _n1 << " n2=" << _n2 << " dc=" << _dc << endl;
     bool is_exist = device_table->Contains(_name);
     if(!is_exist)
     {
@@ -103,7 +105,6 @@ void Circuit::ParseVSource(const string &_name, const string &_n1, const string 
 
 void Circuit::ParseISource(const string &_name, const string &_n1, const string &_n2, double _dc, Complex _ac)
 {
-    // cout << "ISource name=" << _name << " n1=" << _n1 << " n2=" << _n2 << " dc=" << _dc << endl;
     bool is_exist = device_table->Contains(_name);
     if(!is_exist)
     {
@@ -150,6 +151,48 @@ Node* Circuit::GetParseNode(const string &_name)
         node_table->Insert(_name, node);
     }
     return node;
+}
+
+Device *Circuit::GetDevice(const string &_name) const
+{
+    Device *device = (Device*)device_table->Find(_name);
+    if(device == NULL)
+    {
+        cout << "Cannot find " << _name << endl;
+    }
+    return device;
+
+}
+
+void Circuit::LoadSweepDC(Device *_src, double _src_value)
+{
+
+}
+
+void Circuit::LoadDC()
+{
+
+}
+
+void Circuit::Setup(int _analysis_type)
+{
+    
+
+}
+
+void Circuit::Reset()
+{
+
+}
+
+void Circuit::ResetMatrix()
+{
+
+}
+
+void Circuit::ResetRHS()
+{
+
 }
 
 void Circuit::PrintAllDevice() const
