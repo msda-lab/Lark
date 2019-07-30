@@ -34,7 +34,7 @@ Bison version: 3.2+ </br>
 6. `git commit -m "comment"`
 7. `git remote -v`
 8. `git remote add upstream git@github.com:msda-lab/Lark.git`
-9. `git fetch upstream`
+9. `git fetch upstream dev`
 10. `git merge upstream/dev`
 11. `git push`
 12. Open page of `msda-lab/Lark`, click 'Pull request'

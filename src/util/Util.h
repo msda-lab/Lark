@@ -16,7 +16,7 @@ using std::map;
 using std::cout;
 using std::endl;
 
-double Str2Val(char *s);
+double StringToValue(char *s);
 
 void DisplayAnalysis(int anaType, const map<int, string> &_output);
 

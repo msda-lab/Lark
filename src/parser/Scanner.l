@@ -88,7 +88,7 @@ END             [\.][Ee][Nn][Dd][Ss]?
                 strcpy(yylval->s, yytext);
                 yylval->s[strlen(yytext)] = '\0';
                 return token::VSOURCE;}
-{VALUE}         {yylval->f = Str2Val(yytext);
+{VALUE}         {yylval->f = StringToValue(yytext);
                 return token::VALUE;}
 
 {COMMENT}       {}

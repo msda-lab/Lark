@@ -2,7 +2,7 @@
 
 #include <cmath>
 
-double Str2Val(char *s)
+double StringToValue(char *s)
 {
     double value;
     value = atof(s);
