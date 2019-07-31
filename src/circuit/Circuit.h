@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <map>
 
 #include "SymbTable.h"
 #include "AllDevice.h"
@@ -49,7 +50,6 @@ class Circuit
         string name;
         bool has_gnd;
         long int node_count;
-        
 };
 
 #endif // CIRCUIT_H

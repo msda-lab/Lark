@@ -176,6 +176,17 @@ void Circuit::LoadDC()
 
 void Circuit::Setup(int _analysis_type)
 {
+    switch(_analysis_type)
+    {
+    case DC_ANALYSIS_TYPE:
+        break;
+    case AC_ANALYSIS_TYPE:
+        break;
+    case TRAN_ANALYSIS_TYPE: 
+        break;
+    default:
+        break;
+    }
     
 
 }

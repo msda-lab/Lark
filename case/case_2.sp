@@ -1,9 +1,9 @@
 *case_2.sp comment
-R1 1 2 10
-C1 2 3 1p
-V1 2 5 DC 1
-I1 2 3 DC 2
+R1 1 2 100
+C1 2 0 1p
+R2 2 0 100
+V1 1 0 DC 1
 .DC V1 0 10 1
-.PRINT DC V(1) I(1,2)
-.PLOT DC V(1) I(1,2)
+.PRINT DC V(2)
+.PLOT DC V(2)
 .END
