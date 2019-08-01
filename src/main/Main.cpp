@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 
+#include "MainMessage.h"
 #include "Simulator.h"
 #include "Parser.hpp"
 
@@ -45,6 +46,8 @@ int main(int argc, char *argv[])
     //simulator->GetCktPtr()->PrintAllModel();
 
     simulator->Simulate();
+    if(simulator)
+        delete simulator;
 	
 	if(!yyin)
 		fclose(yyin);

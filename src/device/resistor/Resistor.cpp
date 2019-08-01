@@ -11,7 +11,9 @@ Resistor::Resistor(const string &_name, Node *_n1, Node *_n2, double _r)
 
 Resistor::~Resistor()
 {
-
+#ifdef DEBUG
+    PRINT_LINE
+#endif
 }
 
 void Resistor::Setup()

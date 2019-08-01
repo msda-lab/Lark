@@ -12,7 +12,7 @@ class Analysis
 {
     public: 
         Analysis(int _analysis_type);
-        ~Analysis();
+        virtual ~Analysis();
     
     public:
         virtual void DoAnalysis() = 0;

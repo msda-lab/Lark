@@ -7,7 +7,16 @@ Simulator::Simulator(const string &_name)
 
 Simulator::~Simulator()
 {
+#ifdef DEBUG
+    PRINT_LINE
+#endif
 
+    if(ckt)
+        delete ckt;
+    vector<Analysis*>::iterator ait;
+    for(ait = analysis_list.begin(); ait != analysis_list.end(); ++ ait)
+        delete (*ait);
+    analysis_list.clear();
 }
 
 void Simulator::ParseDCAnalysis(const string &_src, double _start, double _end, double _incr)

@@ -8,7 +8,7 @@ ResistorModel::ResistorModel()
 
 ResistorModel::~ResistorModel()
 {
-
+    res_list.clear();
 }
 
 void ResistorModel::LoadDC()
@@ -31,7 +31,4 @@ void ResistorModel::AddInst(Resistor *_res)
     res_list.push_back(_res);
     ++ device_count;
 }
-
-
-
 

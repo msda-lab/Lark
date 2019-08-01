@@ -5,6 +5,7 @@
 #include <string>
 
 #include "Global.h"
+#include "MainMessage.h"
 
 using std::string;
 
@@ -13,7 +14,7 @@ class Device
     public: 
         Device(const string &_name);
         Device(const string &_name, int _type);
-        ~Device();
+        virtual ~Device();
     public: 
         void SetName(const string &_name);
         string GetName() const;
@@ -71,7 +72,7 @@ class Model
 {
     public: 
         Model(const string &_model_type);
-        ~Model();
+        virtual ~Model();
     
     public: 
         string GetModelType() const;
