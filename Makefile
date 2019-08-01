@@ -16,7 +16,7 @@ INC_PATH = -I$(SRC_DIR)/include\
 		   -I$(SRC_DIR)/device/capacitor\
 		   -I$(SRC_DIR)/device/vsource\
 		   -I$(SRC_DIR)/device/isource\
-		   -I$(SRC_DIR)/matrix\
+		   -I$(SRC_DIR)/numeric\
 		   -I$(SRC_DIR)/analysis\
 		   -I$(SRC_DIR)/analysis/dc\
 		   -I$(SRC_DIR)/analysis/ac\
@@ -37,7 +37,7 @@ VPATH = $(SRC_DIR)/main:\
 		$(SRC_DIR)/device/capacitor:\
 		$(SRC_DIR)/device/vsource:\
 		$(SRC_DIR)/device/isource:\
-		$(SRC_DIR)/matrix:\
+		$(SRC_DIR)/numeric:\
 		$(SRC_DIR)/analysis:\
 		$(SRC_DIR)/analysis/dc:\
 		$(SRC_DIR)/analysis/ac:\

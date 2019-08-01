@@ -20,9 +20,6 @@ class Analysis
         void SetCktPtr(Circuit *_ckt);
     
     protected: 
-        int NRIteration();
-        bool Converge();
-
         double tolerance;
         int analysis_type;
         int max_iteration;

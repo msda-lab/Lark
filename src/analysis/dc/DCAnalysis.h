@@ -11,7 +11,7 @@ class DCAnalysis : public Analysis
     
     public: 
         void DoAnalysis();
-        void DoSinglePointAnalysis();
+        void DoDCOperatingPointAnalysis();
         void SetSweepSrc(Device *_src);
     
     private: 
