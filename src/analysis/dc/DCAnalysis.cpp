@@ -23,11 +23,11 @@ void DCAnalysis::DoAnalysis()
     {
         cout << "current_value : " << current_value << endl;
         Reload(current_value);
-        DoSinglePointAnalysis();
+        DoDCOperatingPointAnalysis();
     }
 }
 
-void DCAnalysis::DoSinglePointAnalysis()
+void DCAnalysis::DoDCOperatingPointAnalysis()
 {
 
 }

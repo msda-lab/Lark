@@ -21,16 +21,6 @@ int Analysis::GetAnalysisType() const
     return analysis_type;
 }
 
-int Analysis::NRIteration()
-{
-    return 0;
-}
-
-bool Analysis::Converge()
-{
-    return true;
-}
-
 void Analysis::SetCktPtr(Circuit *_ckt)
 {
     ckt = _ckt;
