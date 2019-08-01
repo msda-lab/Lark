@@ -10,6 +10,10 @@ Circuit::Circuit(const string &_name)
 
 Circuit::~Circuit()
 {
+#ifdef DEBUG
+    PRINT_LINE
+#endif
+
     if(ckt_instance)
         delete ckt_instance;
 }
@@ -171,14 +175,14 @@ void Circuit::Setup(int _analysis_type)
 {
     switch(_analysis_type)
     {
-    case DC_ANALYSIS_TYPE:
-        break;
-    case AC_ANALYSIS_TYPE:
-        break;
-    case TRAN_ANALYSIS_TYPE: 
-        break;
-    default:
-        break;
+        case DC_ANALYSIS_TYPE:
+            break;
+        case AC_ANALYSIS_TYPE:
+            break;
+        case TRAN_ANALYSIS_TYPE: 
+            break;
+        default:
+            break;
     }
     
 

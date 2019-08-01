@@ -8,7 +8,9 @@ Analysis::Analysis(int _analysis_type)
 
 Analysis::~Analysis()
 {
-
+#ifdef DEBUG
+    PRINT_LINE
+#endif
 }
 
 void Analysis::DoAnalysis()

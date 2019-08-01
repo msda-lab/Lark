@@ -7,6 +7,7 @@
 
 #include "CircuitInstance.h"
 #include "AllDevice.h"
+#include "Numeric.h"
 
 using std::string;
 using std::cout;

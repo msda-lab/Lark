@@ -6,9 +6,25 @@ CircuitInstance::CircuitInstance()
 
 CircuitInstance::~CircuitInstance()
 {
+#ifdef DEBUG
+    PRINT_LINE
+#endif
+
+    map<string, Device*>::iterator dit;
+    for(dit = device_list.begin(); dit != device_list.end(); ++ dit)
+        delete dit->second;
     device_list.clear();
+
+    map<string, Model*>::iterator mit;
+    for(mit = model_list.begin(); mit != model_list.end(); ++ mit)
+        delete mit->second;
     model_list.clear();
+
+    map<string, Node*>::iterator nit;
+    for(nit = node_list.begin(); nit != node_list.end(); ++ nit)
+        delete nit->second;
     node_list.clear();
+    
 }
 
 void CircuitInstance::AddDevice(const string &_device_name, Device *_device)

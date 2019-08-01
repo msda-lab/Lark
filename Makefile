@@ -10,7 +10,6 @@ INC_PATH = -I$(SRC_DIR)/include\
 		   -I$(SRC_DIR)/parser\
 		   -I$(SRC_DIR)/simulator\
 		   -I$(SRC_DIR)/circuit\
-		   -I$(SRC_DIR)/parser\
 		   -I$(SRC_DIR)/device\
 		   -I$(SRC_DIR)/device/resistor\
 		   -I$(SRC_DIR)/device/capacitor\
@@ -56,6 +55,7 @@ DEPS = $(OBJS:.o=.o.d)
 CXX = clang++
 #CXX = g++
 
+#CXXFLAGS = -Wall -g -DDEBUG -std=c++11 $(INC_PATH)
 CXXFLAGS = -Wall -g -std=c++11 $(INC_PATH)
 #CXXFLAGS = -w -g -std=c++11  $(INC_PATH)
 LDXXFLAGS = $(LIBS) $(LIB_PATH)

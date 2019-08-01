@@ -10,7 +10,9 @@ Device::Device(const string &_name)
 
 Device::~Device()
 {
-
+#ifdef DEBUG
+    PRINT_LINE
+#endif
 }
 
 void Device::SetName(const string &_name)
@@ -49,13 +51,14 @@ Node::Node(const string &_name)
 
 Node::~Node()
 {
-
+#ifdef DEBUG
+    PRINT_LINE
+#endif
 }
 
 bool Node::Equal(const string &_name, Node *_node)
 {
     return _name == _node->name;
-
 }
 
 void Node::SetDCVoltage(double _dc)
@@ -115,7 +118,9 @@ Model::Model(const string &_model_type)
 
 Model::~Model()
 {
-
+#ifdef DEBUG
+    PRINT_LINE
+#endif
 }
 
 bool Model::Equal(const string &_model_type, Model *_model_ptr)
