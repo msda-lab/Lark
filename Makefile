@@ -6,6 +6,7 @@ SRC_DIR = ./src
 
 INC_PATH = -I$(SRC_DIR)/include\
 		   -I$(SRC_DIR)/util\
+		   -I$(SRC_DIR)/main\
 		   -I$(SRC_DIR)/parser\
 		   -I$(SRC_DIR)/simulator\
 		   -I$(SRC_DIR)/circuit\

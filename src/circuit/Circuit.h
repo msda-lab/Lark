@@ -5,7 +5,7 @@
 #include <string>
 #include <map>
 
-#include "SymbTable.h"
+#include "CircuitInstance.h"
 #include "AllDevice.h"
 
 using std::string;
@@ -14,7 +14,6 @@ using std::endl;
 
 class Circuit
 {
-
     public: 
         Circuit(const string &_name);
         ~Circuit();
@@ -43,9 +42,7 @@ class Circuit
         void PrintAllModel() const;
     
     private: 
-        SymbTable<string, Node*> *node_table;
-        SymbTable<string, Device*> *device_table;
-        SymbTable<string, Model*> *model_table;
+        CircuitInstance *ckt_instance;
 
         string name;
         bool has_gnd;
