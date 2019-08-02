@@ -3,6 +3,9 @@
 Numeric::Numeric()
 {}
 
+Numeric::Numeric(int _node_count, int _analysis_type, int _default_value)
+{}
+
 Numeric::~Numeric() {}
 
 void Numeric::ResetMatrix(double _value)
