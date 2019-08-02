@@ -15,7 +15,7 @@ class Numeric
 {
 public:
     Numeric();
-    Numeric(int _node_count, int _default_value);
+    Numeric(int _node_count, int _analysis_type, int _default_value);
     ~Numeric();
 
 public:
@@ -29,8 +29,7 @@ public:
 private:
     int analysis_type;      // Analysis Type : DC = 1000 .etc
     int matrix_dimension;
-    VectorXd RHS;
-    MatrixXd matrix;
+    MatrixEigen numeric_matrix;
 };
 
 #endif // NUMERIC_H
