@@ -12,7 +12,9 @@ DCAnalysis::DCAnalysis(double _start, double _end, double _incr)
 
 DCAnalysis::~DCAnalysis()
 {
-
+#ifdef DEBUG
+    PRINT_LINE
+#endif
 }
 
 void DCAnalysis::DoAnalysis()
@@ -23,11 +25,11 @@ void DCAnalysis::DoAnalysis()
     {
         cout << "current_value : " << current_value << endl;
         Reload(current_value);
-        DoDCOperatingPointAnalysis();
+        DoSinglePointAnalysis();
     }
 }
 
-void DCAnalysis::DoDCOperatingPointAnalysis()
+void DCAnalysis::DoSinglePointAnalysis()
 {
 
 }

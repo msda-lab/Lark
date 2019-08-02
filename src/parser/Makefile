@@ -1,8 +1,7 @@
 # compile flex and bison
 SRC_DIR = ..
 
-INC_PATH = -I$(SRC_DIR)/include\
-           -I$(SRC_DIR)/util
+INC_PATH = -I$(SRC_DIR)/util
 
 CXX = clang++
 #CXX = g++

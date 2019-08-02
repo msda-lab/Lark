@@ -47,7 +47,10 @@ int main(int argc, char *argv[])
 
     simulator->Simulate();
     if(simulator)
+    {
         delete simulator;
+        simulator = NULL;
+    }
 	
 	if(!yyin)
 		fclose(yyin);

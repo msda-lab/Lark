@@ -27,15 +27,15 @@ public:
     void ResetRHS(double _value);
 
 // Ax = b : Matrix A
-public:
     void GetSolution();
 
 // Ax = b : Matrix A
-public: // operation on matrix
+// operation on matrix
 
     // structure
     void AddMatrixRow(int _row_count);
     void AddMatrixColumn(int _column_count);
+    void AddVectorRow(int _row_count);
 
     // elements
     double GetMatrixValue(int _row, int _column);
@@ -43,7 +43,6 @@ public: // operation on matrix
     void AddMatrixValue(int _row, int _column, double _value);
 
 // Ax = b : Vector b
-public:
     double GetVectorValue(int _row);
     void SetVectorValue(int _row, double _value);
     void AddVectorValue(int _row, double _value);
