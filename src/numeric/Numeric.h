@@ -1,6 +1,8 @@
 #ifndef NUMERIC_H
 #define NUMERIC_H
 
+#define EIGENCHOSEN 1
+
 #include "MatrixEigen.h"
 
 #include "../include/eigen/Core"
@@ -15,21 +17,46 @@ class Numeric
 {
 public:
     Numeric();
-    Numeric(int _node_count, int _analysis_type, int _default_value);
+    Numeric(int _node_count, int _analysis_type, int _default_value = 0);
     ~Numeric();
+    void Destroy(); // Let us destroy all the world!
 
+// Ax = b : Matrix A
 public:
     void ResetMatrix(double _value = 0);
     void ResetRHS(double _value);
 
+// Ax = b : Matrix A
 public:
-    void AddRow(int _row_count);
-    void AddColumn(int _column_count);
+    void GetSolution();
+
+// Ax = b : Matrix A
+public: // operation on matrix
+
+    // structure
+    void AddMatrixRow(int _row_count);
+    void AddMatrixColumn(int _column_count);
+
+    // elements
+    double GetMatrixValue(int _row, int _column);
+    void SetMatrixValue(int _row, int _column, double _value);
+    void AddMatrixValue(int _row, int _column, double _value);
+
+// Ax = b : Vector b
+public:
+    double GetVectorValue(int _row);
+    void SetVectorValue(int _row, double _value);
+    void AddVectorValue(int _row, double _value);
 
 private:
     int analysis_type;      // Analysis Type : DC = 1000 .etc
     int matrix_dimension;
-    //MatrixEigen numeric_matrix;
+
+#if 1
+    MatrixEigen *numeric_matrix;
+#endif
+
+    VectorXd *numeric_vector;
 };
 
 #endif // NUMERIC_H
