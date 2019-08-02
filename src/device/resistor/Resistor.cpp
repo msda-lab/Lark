@@ -16,44 +16,24 @@ Resistor::~Resistor()
 #endif
 }
 
-void Resistor::Setup()
+void Resistor::SetupDC(Numeric *_numeric)
 {
-
+    // do nothing, because already allocate memory.
 }
 
-void Resistor::SetupDC()
+void Resistor::SetupAC(Numeric *_numeric)
 {
-
+    // do nothing, because already allocate memory.
 }
 
-void Resistor::SetupAC()
+void Resistor::SetupTran(Numeric *_numeric)
 {
-
-}
-
-void Resistor::SetupTran()
-{
-
+    // do nothing, because already allocate memory.
 }
 
 void Resistor::Load()
 {
     
-}
-
-void Resistor::LoadDC()
-{
-
-}
-
-void Resistor::LoadAC()
-{
-
-}
-
-void Resistor::LoadTran()
-{
-
 }
 
 void Resistor::SetDCVoltage(double _dc_voltage)

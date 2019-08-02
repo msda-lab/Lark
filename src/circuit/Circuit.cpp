@@ -5,8 +5,7 @@ Circuit::Circuit(const string &_name)
     name = _name;
     node_count = 0;
     has_gnd = false;
-    ckt_instance = new CircuitInstance();
-    numeric = new Numeric();
+    ckt_inst = new CircuitInstance();
 }
 
 Circuit::~Circuit()
@@ -15,10 +14,10 @@ Circuit::~Circuit()
     PRINT_LINE
 #endif
 
-    if(ckt_instance)
+    if(ckt_inst)
     {
-        delete ckt_instance;
-        ckt_instance = NULL;
+        delete ckt_inst;
+        ckt_inst = NULL;
     }
 
     if(numeric)
@@ -30,19 +29,19 @@ Circuit::~Circuit()
 
 void Circuit::ParseRes(const string &_name, const string &_n1, const string &_n2, double _r)
 {
-    bool is_exist = ckt_instance->IsDeviceExist(_name);
+    bool is_exist = ckt_inst->IsDeviceExist(_name);
     if(!is_exist)
     {
         Node *n1 = GetParseNode(_n1);
         Node *n2 = GetParseNode(_n2);
         Resistor *res = new Resistor(_name, n1, n2, _r);
-        ckt_instance->AddDevice(_name, res);
+        ckt_inst->AddDevice(_name, res);
 
-        ResistorModel *res_model = (ResistorModel*)ckt_instance->GetModel(RES_MODEL_TYPE);
+        ResistorModel *res_model = (ResistorModel*)ckt_inst->GetModel(RES_MODEL_TYPE);
         if(res_model == NULL)
         {
             res_model = new ResistorModel();
-            ckt_instance->AddModel(RES_MODEL_TYPE, res_model);
+            ckt_inst->AddModel(RES_MODEL_TYPE, res_model);
         }
         res_model->AddInst(res);
     }
@@ -54,19 +53,19 @@ void Circuit::ParseRes(const string &_name, const string &_n1, const string &_n2
 
 void Circuit::ParseCap(const string &_name, const string &_n1, const string &_n2, double _c)
 {
-    bool is_exist = ckt_instance->IsDeviceExist(_name);
+    bool is_exist = ckt_inst->IsDeviceExist(_name);
     if(!is_exist)
     {
         Node *n1 = GetParseNode(_n1);
         Node *n2 = GetParseNode(_n2);
         Capacitor *cap = new Capacitor(_name, n1, n2, _c);
-        ckt_instance->AddDevice(_name, cap);
+        ckt_inst->AddDevice(_name, cap);
 
-        CapacitorModel *cap_model = (CapacitorModel*)ckt_instance->GetDevice(CAP_MODEL_TYPE);
+        CapacitorModel *cap_model = (CapacitorModel*)ckt_inst->GetDevice(CAP_MODEL_TYPE);
         if(cap_model == NULL)
         {
             cap_model = new CapacitorModel();
-            ckt_instance->AddModel(CAP_MODEL_TYPE, cap_model);
+            ckt_inst->AddModel(CAP_MODEL_TYPE, cap_model);
         }
         cap_model->AddInst(cap);
     }
@@ -85,7 +84,7 @@ void Circuit::ParseInd(const string &_name, const string &_n1, const string &_n2
 
 void Circuit::ParseVSource(const string &_name, const string &_n1, const string &_n2, double _dc, Complex _ac)
 {
-    bool is_exist = ckt_instance->IsDeviceExist(_name);
+    bool is_exist = ckt_inst->IsDeviceExist(_name);
     if(!is_exist)
     {
         Node *n1 = GetParseNode(_n1);
@@ -93,13 +92,13 @@ void Circuit::ParseVSource(const string &_name, const string &_n1, const string 
         VSource *vsrc = new VSource(_name, n1, n2);
         vsrc->SetDCValue(_dc);
         vsrc->SetACValue(_ac);
-        ckt_instance->AddDevice(_name, vsrc);
+        ckt_inst->AddDevice(_name, vsrc);
 
-        VSourceModel *vsrc_model = (VSourceModel*)ckt_instance->GetModel(VSRC_MODEL_TYPE);
+        VSourceModel *vsrc_model = (VSourceModel*)ckt_inst->GetModel(VSRC_MODEL_TYPE);
         if(vsrc_model == NULL)
         {
             vsrc_model = new VSourceModel();
-            ckt_instance->AddModel(VSRC_MODEL_TYPE, vsrc_model);
+            ckt_inst->AddModel(VSRC_MODEL_TYPE, vsrc_model);
         }
         vsrc_model->AddInst(vsrc);
     }
@@ -113,7 +112,7 @@ void Circuit::ParseVSource(const string &_name, const string &_n1, const string 
 
 void Circuit::ParseISource(const string &_name, const string &_n1, const string &_n2, double _dc, Complex _ac)
 {
-    bool is_exist = ckt_instance->IsDeviceExist(_name);
+    bool is_exist = ckt_inst->IsDeviceExist(_name);
     if(!is_exist)
     {
         Node *n1 = GetParseNode(_n1);
@@ -121,13 +120,13 @@ void Circuit::ParseISource(const string &_name, const string &_n1, const string 
         ISource *isrc = new ISource(_name, n1, n2);
         isrc->SetDCValue(_dc);
         isrc->SetACValue(_ac);
-        ckt_instance->AddDevice(_name, isrc);
+        ckt_inst->AddDevice(_name, isrc);
 
-        ISourceModel *isrc_model = (ISourceModel*)ckt_instance->GetModel(ISRC_MODEL_TYPE);
+        ISourceModel *isrc_model = (ISourceModel*)ckt_inst->GetModel(ISRC_MODEL_TYPE);
         if(isrc_model == NULL)
         {
             isrc_model = new ISourceModel();
-            ckt_instance->AddModel(ISRC_MODEL_TYPE, isrc_model);
+            ckt_inst->AddModel(ISRC_MODEL_TYPE, isrc_model);
         }
         isrc_model->AddInst(isrc);
     }
@@ -139,7 +138,7 @@ void Circuit::ParseISource(const string &_name, const string &_n1, const string 
 
 Node* Circuit::GetParseNode(const string &_name)
 {
-    Node *node = ckt_instance->GetNode(_name);
+    Node *node = ckt_inst->GetNode(_name);
     if(node == NULL)
     {
         if(_name == "GND" || _name == "gnd" || _name == "0")
@@ -156,14 +155,14 @@ Node* Circuit::GetParseNode(const string &_name)
             ++ node_count;
             node->SetLocation(node_count);
         }
-        ckt_instance->AddNode(_name, node);
+        ckt_inst->AddNode(_name, node);
     }
     return node;
 }
 
 Device *Circuit::GetDevice(const string &_name) const
 {
-    Device *device = ckt_instance->GetDevice(_name);
+    Device *device = ckt_inst->GetDevice(_name);
     if(device == NULL)
     {
         cout << "Cannot find " << _name << endl;
@@ -183,7 +182,13 @@ void Circuit::LoadDC()
 
 void Circuit::Setup(int _analysis_type)
 {
-
+    // whether gnd exist, we add one row and column to Matrix and Vector
+    ++ node_count;
+    numeric = new Numeric(node_count, _analysis_type);
+    for(auto it = ckt_inst->GetModelList().begin(); it != ckt_inst->GetModelList().end(); ++ it)
+    {
+        it->second->Setup(numeric, _analysis_type);
+    }
 }
 
 void Circuit::Reset()
@@ -201,17 +206,26 @@ void Circuit::ResetRHS()
 
 }
 
+void Circuit::DestroyMatrixAndVector()
+{
+    if(numeric)
+    {
+        delete numeric;
+        numeric = NULL;
+    }
+}
+
 void Circuit::PrintAllDevice() const
 {
-    ckt_instance->PrintAllDevice();
+    ckt_inst->PrintAllDevice();
 }
 
 void Circuit::PrintAllNode() const
 {
-    ckt_instance->PrintAllModel();
+    ckt_inst->PrintAllModel();
 }
 
 void Circuit::PrintAllModel() const
 {
-    ckt_instance->PrintAllNode();
+    ckt_inst->PrintAllNode();
 }

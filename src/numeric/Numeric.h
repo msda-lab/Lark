@@ -47,9 +47,12 @@ public:
     void SetVectorValue(int _row, double _value);
     void AddVectorValue(int _row, double _value);
 
+    int GetDimension() const;
+    void SetDimension(int _dimension);
+
 private:
     int analysis_type;      // Analysis Type : DC = 1000 .etc
-    int matrix_dimension;
+    int dimension;
 
 #if 1
     MatrixEigen *numeric_matrix;

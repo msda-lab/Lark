@@ -27,6 +27,8 @@ void DCAnalysis::DoAnalysis()
         Reload(current_value);
         DoSinglePointAnalysis();
     }
+
+    ckt->DestroyMatrixAndVector();
 }
 
 void DCAnalysis::DoSinglePointAnalysis()

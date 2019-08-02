@@ -38,12 +38,13 @@ class Circuit
         void ResetRHS();
         void Setup(int _analysis_type);
 
+        void DestroyMatrixAndVector();
         void PrintAllDevice() const;
         void PrintAllNode() const;
         void PrintAllModel() const;
     
     private: 
-        CircuitInstance *ckt_instance;
+        CircuitInstance *ckt_inst;
         Numeric *numeric;
 
         string name;

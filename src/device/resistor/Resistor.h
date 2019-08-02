@@ -9,15 +9,10 @@ class Resistor : public Device
         Resistor(const string &_name, Node *_n1, Node *_n2, double _r);
         ~Resistor();
     public:  
-        void Setup();
-        void SetupDC();
-        void SetupAC();
-        void SetupTran();
-
+        void SetupDC(Numeric *_numeric);
+        void SetupAC(Numeric *_numeric);
+        void SetupTran(Numeric *_umeric);
         void Load();
-        void LoadDC();
-        void LoadAC();
-        void LoadTran();
 
         void SetDCVoltage(double _dc_voltage);
         double GetDCVoltage() const;

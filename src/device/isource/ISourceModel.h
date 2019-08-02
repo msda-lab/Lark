@@ -15,6 +15,7 @@ class ISourceModel : public Model
         ~ISourceModel();
     
     public: 
+        void Setup(Numeric *_numeric, int _analysis_type);
         void LoadDC();
         void LoadAC(double _omega);
         void LoadTran(double _t, double _h, bool _iter);
