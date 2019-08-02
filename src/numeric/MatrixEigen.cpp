@@ -5,6 +5,7 @@ MatrixEigen::MatrixEigen(int _row, int _column)
     matrix = MatrixXd(_row, _column);
 }
 
+// empty
 MatrixEigen::~MatrixEigen() {}
 
 void MatrixEigen::GetInverseMatrix()
