@@ -29,7 +29,7 @@ public:
 private:
     int analysis_type;      // Analysis Type : DC = 1000 .etc
     int matrix_dimension;
-    MatrixEigen numeric_matrix;
+    //MatrixEigen numeric_matrix;
 };
 
 #endif // NUMERIC_H
