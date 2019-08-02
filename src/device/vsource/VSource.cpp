@@ -7,6 +7,7 @@ VSource::VSource(const string &_name, Node *_n1, Node *_n2)
     n1 = _n1;
     n2 = _n2;
     SetType(VSOURCE_TYPE);
+    branch_id = 0;
 }
 
 VSource::~VSource()
@@ -14,22 +15,17 @@ VSource::~VSource()
 
 }
 
-void VSource::Setup()
+void VSource::SetupDC(Numeric *_numeric)
 {
 
 }
 
-void VSource::SetupDC()
+void VSource::SetupAC(Numeric *_numeric)
 {
 
 }
 
-void VSource::SetupAC()
-{
-
-}
-
-void VSource::SetupTran()
+void VSource::SetupTran(Numeric *_numeric)
 {
 
 }

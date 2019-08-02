@@ -7,6 +7,9 @@ Numeric::Numeric()
 Numeric::Numeric(int _node_count, int _analysis_type, int _default_value)
 {
     numeric_matrix = new MatrixEigen(_node_count, _node_count);
+    numeric_vector = new VectorXd(_node_count); 
+    analysis_type = _analysis_type;
+    dimension = _node_count;
 }
 
 Numeric::~Numeric()
@@ -21,6 +24,16 @@ void Numeric::Destroy()
 void Numeric::GetSolution()
 {
 
+}
+
+int Numeric::GetDimension() const
+{
+    return dimension;
+}
+
+void Numeric::SetDimension(int _dimension)
+{
+    dimension = _dimension;
 }
 
 // empty
@@ -67,6 +80,7 @@ void Numeric::AddVectorRow(int _row_count)
 // empty
 double Numeric::GetVectorValue(int _row)
 {
+    return 0;
 
 }
 
@@ -81,5 +95,4 @@ void Numeric::AddVectorValue(int _row, double _value)
 {
 
 }
-
 

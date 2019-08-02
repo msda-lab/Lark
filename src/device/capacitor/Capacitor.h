@@ -10,9 +10,9 @@ class Capacitor : public Device
         ~Capacitor();
     
     public: 
-        void Setup();
-        void SetupAC();
-        void SetupTran();
+        void SetupDC(Numeric *_numeric);
+        void SetupTran(Numeric *_numeric);
+        void SetupAC(Numeric *_numeric);
 
         void Load();
         void LoadAC();

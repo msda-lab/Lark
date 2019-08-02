@@ -31,3 +31,7 @@ void ISourceModel::AddInst(ISource *_isrc)
     isrc_list.push_back(_isrc);
     ++ device_count;
 }
+
+void ISourceModel::Setup(Numeric *_numeric, int _analysis_type)
+{
+}

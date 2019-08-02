@@ -6,6 +6,7 @@
 
 #include "Global.h"
 #include "MainMessage.h"
+#include "Numeric.h"
 
 using std::string;
 
@@ -23,14 +24,14 @@ class Device
 
         static bool Equal(const string &_name, Device *_dev);
 
-        virtual void Setup() = 0;
+        virtual void SetupDC(Numeric *_numeric) = 0;
+        virtual void SetupAC(Numeric *_numeric) = 0;
+        virtual void SetupTran(Numeric *_numeric) = 0;
         virtual void Load() = 0;
 
     protected: 
         string name;
         int type;
-        
-
 };
 
 class Node
@@ -80,6 +81,7 @@ class Model
 
         static bool Equal(const string &_model_type, Model *_model_ptr);
         
+        virtual void Setup(Numeric *_numeric, int _analysis_type) = 0;
         virtual void LoadDC() = 0;
         virtual void LoadAC(double _omega) = 0;
         virtual void LoadTran(double _t, double _h, bool _iter) = 0;

@@ -15,22 +15,17 @@ ISource::~ISource()
 
 }
 
-void ISource::Setup()
+void ISource::SetupDC(Numeric *_numeric)
 {
 
 }
 
-void ISource::SetupDC()
+void ISource::SetupAC(Numeric *_numeric)
 {
 
 }
 
-void ISource::SetupAC()
-{
-
-}
-
-void ISource::SetupTran()
+void ISource::SetupTran(Numeric *_numeric)
 {
 
 }

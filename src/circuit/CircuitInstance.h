@@ -34,6 +34,8 @@ class CircuitInstance
         Model* GetModel(const string &_model_name) const;
         Node* GetNode(const string &_node_name) const;
 
+        const map<string, Model*>& GetModelList() const;
+
         void PrintAllDevice() const;
         void PrintAllModel() const;
         void PrintAllNode() const;

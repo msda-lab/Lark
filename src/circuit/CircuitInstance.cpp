@@ -122,6 +122,11 @@ Node* CircuitInstance::GetNode(const string &_node_name) const
         return it->second;
 }
 
+const map<string, Model*>& CircuitInstance::GetModelList() const
+{
+    return model_list;
+}
+
 void CircuitInstance::PrintAllDevice() const
 {
     map<string, Device*>::const_iterator cit;

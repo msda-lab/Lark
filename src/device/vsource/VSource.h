@@ -10,10 +10,9 @@ class VSource : public Device
         ~VSource();
     
     public: 
-        void Setup();
-        void SetupDC();
-        void SetupAC();
-        void SetupTran();
+        void SetupDC(Numeric *_numeric);
+        void SetupAC(Numeric *_numeric);
+        void SetupTran(Numeric *_numeric);
 
         void Load();
         void LoadDC();
@@ -28,6 +27,7 @@ class VSource : public Device
     private: 
         double dc_value;
         Complex ac_value;
+        int branch_id;
 
         Node *n1;
         Node *n2;
