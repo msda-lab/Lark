@@ -44,6 +44,7 @@ class Circuit
     
     private: 
         CircuitInstance *ckt_instance;
+        Numeric *numeric;
 
         string name;
         bool has_gnd;

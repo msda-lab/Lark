@@ -12,19 +12,27 @@ CircuitInstance::~CircuitInstance()
 
     map<string, Device*>::iterator dit;
     for(dit = device_list.begin(); dit != device_list.end(); ++ dit)
+    {
         delete dit->second;
+        dit->second = NULL;
+    }
     device_list.clear();
 
     map<string, Model*>::iterator mit;
     for(mit = model_list.begin(); mit != model_list.end(); ++ mit)
+    {
         delete mit->second;
+        mit->second = NULL;
+    }
     model_list.clear();
 
     map<string, Node*>::iterator nit;
     for(nit = node_list.begin(); nit != node_list.end(); ++ nit)
+    {
         delete nit->second;
+        nit->second = NULL;
+    }
     node_list.clear();
-    
 }
 
 void CircuitInstance::AddDevice(const string &_device_name, Device *_device)
@@ -141,5 +149,4 @@ void CircuitInstance::PrintAllNode() const
         cout << "Node name: " << cit->first << " address: " << cit->second << endl;
     }
 }
-
 

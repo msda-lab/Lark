@@ -12,10 +12,16 @@ Simulator::~Simulator()
 #endif
 
     if(ckt)
+    {
         delete ckt;
+        ckt = NULL;
+    }
     vector<Analysis*>::iterator ait;
     for(ait = analysis_list.begin(); ait != analysis_list.end(); ++ ait)
+    {
         delete (*ait);
+        (*ait) = NULL;
+    }
     analysis_list.clear();
 }
 

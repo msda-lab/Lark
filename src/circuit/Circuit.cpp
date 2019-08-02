@@ -6,6 +6,7 @@ Circuit::Circuit(const string &_name)
     node_count = 0;
     has_gnd = false;
     ckt_instance = new CircuitInstance();
+    numeric = new Numeric();
 }
 
 Circuit::~Circuit()
@@ -15,7 +16,16 @@ Circuit::~Circuit()
 #endif
 
     if(ckt_instance)
+    {
         delete ckt_instance;
+        ckt_instance = NULL;
+    }
+
+    if(numeric)
+    {
+        delete numeric;
+        numeric = NULL;
+    }
 }
 
 void Circuit::ParseRes(const string &_name, const string &_n1, const string &_n2, double _r)
@@ -173,18 +183,6 @@ void Circuit::LoadDC()
 
 void Circuit::Setup(int _analysis_type)
 {
-    switch(_analysis_type)
-    {
-        case DC_ANALYSIS_TYPE:
-            break;
-        case AC_ANALYSIS_TYPE:
-            break;
-        case TRAN_ANALYSIS_TYPE: 
-            break;
-        default:
-            break;
-    }
-    
 
 }
 

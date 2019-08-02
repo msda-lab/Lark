@@ -8,6 +8,9 @@ ResistorModel::ResistorModel()
 
 ResistorModel::~ResistorModel()
 {
+#ifdef DEBUG
+    PRINT_LINE
+#endif
     res_list.clear();
 }
 
