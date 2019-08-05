@@ -38,6 +38,7 @@ class Circuit
         void ResetRHS();
         void Setup(int _analysis_type);
 
+        void FinishParsing();
         void DestroyMatrixAndVector();
         void PrintAllDevice() const;
         void PrintAllNode() const;

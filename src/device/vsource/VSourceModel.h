@@ -15,8 +15,11 @@ class VSourceModel : public Model
         ~VSourceModel();
     
     public: 
-        void Setup(Numeric *numeric, int _analysis_type);
-        void LoadDC();
+        void SetupDC(Numeric *numeric);
+        void SetupAC(Numeric *numeric);
+        void SetupTran(Numeric *numeric);
+
+        void LoadDC(Numeric *_numeric);
         void LoadAC(double _omega);
         void LoadTran(double _t, double _h, bool _iter);
 

@@ -59,9 +59,17 @@ Circuit *Simulator::GetCktPtr() const
     return ckt;
 }
 
+void Simulator::FinishParsing()
+{
+    ckt->FinishParsing();
+}
+
 
 void Simulator::Simulate()
 {
+    // Do some operations before simulation
+    FinishParsing();
+
     vector<Analysis*>::const_iterator task;
     for(task = analysis_list.cbegin(); task != analysis_list.cend(); ++ task)
     {

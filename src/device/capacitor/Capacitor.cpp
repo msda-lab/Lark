@@ -31,7 +31,7 @@ void Capacitor::SetupTran(Numeric *_numeric)
 
 }
 
-void Capacitor::Load()
+void Capacitor::LoadDC(Numeric *_numeric)
 {
 
 }

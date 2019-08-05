@@ -48,7 +48,7 @@ public:
     void AddVectorValue(int _row, double _value);
 
     int GetDimension() const;
-    void SetDimension(int _dimension);
+    void AddDimension(int _dimension);
 
 private:
     int analysis_type;      // Analysis Type : DC = 1000 .etc

@@ -31,9 +31,9 @@ int Numeric::GetDimension() const
     return dimension;
 }
 
-void Numeric::SetDimension(int _dimension)
+void Numeric::AddDimension(int _dimension)
 {
-    dimension = _dimension;
+    dimension += _dimension;
 }
 
 // empty

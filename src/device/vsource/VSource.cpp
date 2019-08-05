@@ -17,7 +17,14 @@ VSource::~VSource()
 
 void VSource::SetupDC(Numeric *_numeric)
 {
+    // Set branch id to the last index of matrix
+    branch_id = _numeric->GetDimension();
 
+    _numeric->AddMatrixRow(1);
+    _numeric->AddMatrixColumn(1);
+    _numeric->AddVectorRow(1);
+
+    _numeric->AddDimension(1);
 }
 
 void VSource::SetupAC(Numeric *_numeric)
@@ -30,14 +37,14 @@ void VSource::SetupTran(Numeric *_numeric)
 
 }
 
-void VSource::Load()
+void VSource::LoadDC(Numeric *_numeric)
 {
 
 }
 
-void VSource::LoadDC()
+void VSource::LoadSweepDC(Numeric *_numeric, double _value)
 {
-
+    
 }
 
 void VSource::LoadAC()

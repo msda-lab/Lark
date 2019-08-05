@@ -11,7 +11,7 @@ VSourceModel::~VSourceModel()
 
 }
 
-void VSourceModel::LoadDC()
+void VSourceModel::LoadDC(Numeric *_numeric)
 {
 
 }
@@ -32,26 +32,20 @@ void VSourceModel::AddInst(VSource *_vsrc)
     ++ device_count;
 }
 
-void VSourceModel::Setup(Numeric *_numeric, int _analysis_type)
+void VSourceModel::SetupDC(Numeric *_numeric)
 {
-    switch(_analysis_type)
-    {
-        case DC_ANALYSIS_TYPE:
-            for(size_t i = 0; i < vsrc_list.size(); ++ i)
-                vsrc_list[i]->SetupDC(_numeric);
-            break;
+    for(size_t i = 0; i < vsrc_list.size(); ++ i)
+        vsrc_list[i]->SetupDC(_numeric);
+}
 
-        case AC_ANALYSIS_TYPE:
-            for(size_t i = 0; i < vsrc_list.size(); ++ i)
-                vsrc_list[i]->SetupAC(_numeric);
-            break;
+void VSourceModel::SetupAC(Numeric *_numeric)
+{
+    for(size_t i = 0; i < vsrc_list.size(); ++ i)
+        vsrc_list[i]->SetupDC(_numeric);
+}
 
-        case TRAN_ANALYSIS_TYPE:
-            for(size_t i = 0; i < vsrc_list.size(); ++ i)
-                vsrc_list[i]->SetupTran(_numeric);
-            break;
-
-        default:
-            cout << "Unknown analysis type" << endl;
-    }
+void VSourceModel::SetupTran(Numeric *_numeric)
+{
+    for(size_t i = 0; i < vsrc_list.size(); ++ i)
+        vsrc_list[i]->SetupDC(_numeric);
 }

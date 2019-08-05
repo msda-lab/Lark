@@ -35,6 +35,7 @@ class Simulator
 
         Circuit *GetCktPtr() const;
 
+        void FinishParsing();
         void Simulate();
 
     

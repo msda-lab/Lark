@@ -11,7 +11,7 @@ CapacitorModel::~CapacitorModel()
 
 }
 
-void CapacitorModel::LoadDC()
+void CapacitorModel::LoadDC(Numeric *_numeric)
 {
 
 }
@@ -32,26 +32,20 @@ void CapacitorModel::AddInst(Capacitor *_cap)
     ++ device_count;
 }
 
-void CapacitorModel::Setup(Numeric *_numeric, int _analysis_type)
+void CapacitorModel::SetupDC(Numeric *_numeric)
 {
-    switch(_analysis_type)
-    {
-        case DC_ANALYSIS_TYPE:
-            for(size_t i = 0; i < cap_list.size(); ++ i)
-                cap_list[i]->SetupDC(_numeric);
-            break;
+    for(size_t i = 0; i < cap_list.size(); ++ i)
+        cap_list[i]->SetupDC(_numeric);
+}
 
-        case AC_ANALYSIS_TYPE:
-            for(size_t i = 0; i < cap_list.size(); ++ i)
-                cap_list[i]->SetupAC(_numeric);
-            break;
+void CapacitorModel::SetupAC(Numeric *_numeric)
+{
+    for(size_t i = 0; i < cap_list.size(); ++ i)
+        cap_list[i]->SetupAC(_numeric);
+}
 
-        case TRAN_ANALYSIS_TYPE:
-            for(size_t i = 0; i < cap_list.size(); ++ i)
-                cap_list[i]->SetupTran(_numeric);
-            break;
-
-        default:
-            cout << "Unknown analysis type" << endl;
-    }
+void CapacitorModel::SetupTran(Numeric *_numeric)
+{
+    for(size_t i = 0; i < cap_list.size(); ++ i)
+        cap_list[i]->SetupTran(_numeric);
 }

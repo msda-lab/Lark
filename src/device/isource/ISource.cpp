@@ -17,6 +17,7 @@ ISource::~ISource()
 
 void ISource::SetupDC(Numeric *_numeric)
 {
+    // do nothing
 
 }
 
@@ -30,14 +31,14 @@ void ISource::SetupTran(Numeric *_numeric)
 
 }
 
-void ISource::Load()
+void ISource::LoadDC(Numeric *_numeric)
 {
 
 }
 
-void ISource::LoadDC()
+void ISource::LoadSweepDC(Numeric *_numeric, double _value)
 {
-
+    
 }
 
 void ISource::LoadAC()

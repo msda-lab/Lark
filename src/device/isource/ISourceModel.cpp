@@ -11,7 +11,7 @@ ISourceModel::~ISourceModel()
 
 }
 
-void ISourceModel::LoadDC()
+void ISourceModel::LoadDC(Numeric *_numeric)
 {
 
 }
@@ -32,6 +32,20 @@ void ISourceModel::AddInst(ISource *_isrc)
     ++ device_count;
 }
 
-void ISourceModel::Setup(Numeric *_numeric, int _analysis_type)
+void ISourceModel::SetupDC(Numeric *_numeric)
 {
+    for(size_t i = 0; i < isrc_list.size(); ++i)
+        isrc_list[i]->SetupDC(_numeric);
+}
+
+void ISourceModel::SetupAC(Numeric *_numeric)
+{
+    for(size_t i = 0; i < isrc_list.size(); ++i)
+        isrc_list[i]->SetupAC(_numeric);
+}
+
+void ISourceModel::SetupTran(Numeric *_numeric)
+{
+    for(size_t i = 0; i < isrc_list.size(); ++i)
+        isrc_list[i]->SetupTran(_numeric);
 }
