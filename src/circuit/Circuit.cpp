@@ -27,6 +27,8 @@ Circuit::~Circuit()
     }
 }
 
+/******************************** Parse and Build Instance ********************************/
+
 void Circuit::ParseRes(const string &_name, const string &_n1, const string &_n2, double _r)
 {
     bool is_exist = ckt_inst->IsDeviceExist(_name);
@@ -170,6 +172,8 @@ Device *Circuit::GetDevice(const string &_name) const
     return device;
 }
 
+/********************************** Setup and Load Operations ******************************/
+
 void Circuit::LoadSweepDC(Device *_src, double _src_value)
 {
 
@@ -182,12 +186,23 @@ void Circuit::LoadDC()
 
 void Circuit::Setup(int _analysis_type)
 {
-    // whether gnd exist, we add one row and column to Matrix and Vector
-    ++ node_count;
     numeric = new Numeric(node_count, _analysis_type);
     for(auto it = ckt_inst->GetModelList().begin(); it != ckt_inst->GetModelList().end(); ++ it)
     {
-        it->second->Setup(numeric, _analysis_type);
+        switch(_analysis_type)
+        {
+            case DC_ANALYSIS_TYPE:
+                it->second->SetupDC(numeric);
+                break;
+            case AC_ANALYSIS_TYPE:
+                it->second->SetupAC(numeric);
+                break;
+            case TRAN_ANALYSIS_TYPE:
+                it->second->SetupTran(numeric);
+                break;
+            default: 
+                cout << "Unknown analysis type" << endl;
+        }
     }
 }
 
@@ -205,6 +220,16 @@ void Circuit::ResetRHS()
 {
 
 }
+
+// do some operations before simulation
+
+void Circuit::FinishParsing()
+{
+    // add one row and column to Matrix and Vector whether gnd exist
+    node_count ++;
+}
+
+/******************************** Print and Destroy *****************************/
 
 void Circuit::DestroyMatrixAndVector()
 {

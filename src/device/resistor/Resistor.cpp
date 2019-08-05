@@ -31,7 +31,7 @@ void Resistor::SetupTran(Numeric *_numeric)
     // do nothing, because already allocate memory.
 }
 
-void Resistor::Load()
+void Resistor::LoadDC(Numeric *_numeric)
 {
     
 }

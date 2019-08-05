@@ -14,7 +14,7 @@ ResistorModel::~ResistorModel()
     res_list.clear();
 }
 
-void ResistorModel::LoadDC()
+void ResistorModel::LoadDC(Numeric *_numeric)
 {
 
 }
@@ -35,28 +35,22 @@ void ResistorModel::AddInst(Resistor *_res)
     ++ device_count;
 }
 
-void ResistorModel::Setup(Numeric *_numeric, int _analysis_type)
+void ResistorModel::SetupDC(Numeric *_numeric)
 {
-    switch(_analysis_type)
-    {
-        case DC_ANALYSIS_TYPE:
-            for(size_t i = 0; i < res_list.size(); ++ i)
-                res_list[i]->SetupDC(_numeric);
-            break;
+    for(size_t i = 0; i < res_list.size(); ++ i)
+        res_list[i]->SetupDC(_numeric);
+}
 
-        case AC_ANALYSIS_TYPE:
-            for(size_t i = 0; i < res_list.size(); ++ i)
-                res_list[i]->SetupAC(_numeric);
-            break;
+void ResistorModel::SetupAC(Numeric *_numeric)
+{
+    for(size_t i = 0; i < res_list.size(); ++ i)
+        res_list[i]->SetupAC(_numeric);
+}
 
-        case TRAN_ANALYSIS_TYPE:
-            for(size_t i = 0; i < res_list.size(); ++ i)
-                res_list[i]->SetupTran(_numeric);
-            break;
-
-        default:
-            cout << "Unknown analysis type" << endl;
-    }
+void ResistorModel::SetupTran(Numeric *_numeric)
+{
+    for(size_t i = 0; i < res_list.size(); ++ i)
+        res_list[i]->SetupTran(_numeric);
 }
 
 

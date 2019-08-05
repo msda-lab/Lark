@@ -14,8 +14,8 @@ class VSource : public Device
         void SetupAC(Numeric *_numeric);
         void SetupTran(Numeric *_numeric);
 
-        void Load();
-        void LoadDC();
+        void LoadDC(Numeric *_numeric);
+        void LoadSweepDC(Numeric *_numeric, double _value);
         void LoadAC();
         void LoadTran();
 

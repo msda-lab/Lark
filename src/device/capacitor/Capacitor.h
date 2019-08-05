@@ -14,7 +14,7 @@ class Capacitor : public Device
         void SetupTran(Numeric *_numeric);
         void SetupAC(Numeric *_numeric);
 
-        void Load();
+        void LoadDC(Numeric *_numeric);
         void LoadAC();
         void LoadTran();
 
