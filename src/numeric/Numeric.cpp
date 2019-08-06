@@ -4,7 +4,7 @@ Numeric::Numeric()
 {
 }
 
-Numeric::Numeric(int _node_count, int _analysis_type, int _default_value)
+Numeric::Numeric(int _node_count, int _analysis_type)
 {
     numeric_matrix = new MatrixEigen(_node_count, _node_count);
     numeric_vector = new VectorXd(_node_count); 
@@ -37,12 +37,12 @@ void Numeric::AddDimension(int _dimension)
 }
 
 // empty
-void Numeric::ResetMatrix(double _value)
+void Numeric::ResetMatrix()
 {
 }
 
 // empty
-void Numeric::ResetVector(double _value)
+void Numeric::ResetVector()
 {
 }
 
@@ -92,6 +92,16 @@ void Numeric::SetVectorValue(int _row, double _value)
 
 // empty
 void Numeric::AddVectorValue(int _row, double _value)
+{
+
+}
+
+void Numeric::PrintMatrix() const
+{
+
+}
+
+void Numeric::PrintVector() const
 {
 
 }

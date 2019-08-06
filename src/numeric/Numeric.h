@@ -17,14 +17,14 @@ class Numeric
 {
 public:
     Numeric();
-    Numeric(int _node_count, int _analysis_type, int _default_value = 0);
+    Numeric(int _node_count, int _analysis_type);
     ~Numeric();
     void Destroy(); // Let us destroy all the world!
 
 // Ax = b : Matrix A
 public:
-    void ResetMatrix(double _value = 0);
-    void ResetVector(double _value);
+    void ResetMatrix();
+    void ResetVector();
 
 // Ax = b : Matrix A
     void GetSolution();
@@ -49,6 +49,9 @@ public:
 
     int GetDimension() const;
     void AddDimension(int _dimension);
+
+    void PrintMatrix() const;
+    void PrintVector() const;
 
 private:
     int analysis_type;      // Analysis Type : DC = 1000 .etc

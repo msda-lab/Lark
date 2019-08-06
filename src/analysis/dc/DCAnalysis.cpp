@@ -33,7 +33,7 @@ void DCAnalysis::DoAnalysis()
 
 void DCAnalysis::DoSinglePointAnalysis()
 {
-
+    ckt->GetNumericPtr()->GetSolution();
 }
 
 void DCAnalysis::Reload(double _src_value)
