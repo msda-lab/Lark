@@ -6,6 +6,8 @@ Resistor::Resistor(const string &_name, Node *_n1, Node *_n2, double _r)
     r = _r;
     n1 = _n1;
     n2 = _n2;
+    n_pos = n1->GetLocation();
+    n_neg = n2->GetLocation();
     SetType(RESISTOR_TYPE);
 }
 
@@ -19,21 +21,34 @@ Resistor::~Resistor()
 void Resistor::SetupDC(Numeric *_numeric)
 {
     // do nothing, because already allocate memory.
+    numeric = _numeric;
 }
 
 void Resistor::SetupAC(Numeric *_numeric)
 {
     // do nothing, because already allocate memory.
+    numeric = _numeric;
 }
 
 void Resistor::SetupTran(Numeric *_numeric)
 {
     // do nothing, because already allocate memory.
+    numeric = _numeric;
 }
 
-void Resistor::LoadDC(Numeric *_numeric)
+void Resistor::LoadDC()
 {
-    
+    /*       N+       N-
+     *
+     * N+    1/R    -1/R
+     *
+     * N-   -1/R     1/R
+     */   
+
+    numeric->AddMatrixValue(n_pos, n_pos, 1.0 / r);
+    numeric->AddMatrixValue(n_pos, n_neg, -1.0 / r);
+    numeric->AddMatrixValue(n_neg, n_pos, -1.0 / r);
+    numeric->AddMatrixValue(n_neg, n_neg, 1.0 / r);
 }
 
 void Resistor::SetDCVoltage(double _dc_voltage)

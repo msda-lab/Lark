@@ -11,7 +11,7 @@ CapacitorModel::~CapacitorModel()
 
 }
 
-void CapacitorModel::LoadDC(Numeric *_numeric)
+void CapacitorModel::LoadDC()
 {
 
 }

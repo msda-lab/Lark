@@ -11,7 +11,7 @@ ISourceModel::~ISourceModel()
 
 }
 
-void ISourceModel::LoadDC(Numeric *_numeric)
+void ISourceModel::LoadDC()
 {
 
 }

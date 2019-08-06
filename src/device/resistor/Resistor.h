@@ -13,7 +13,7 @@ class Resistor : public Device
         void SetupAC(Numeric *_numeric);
         void SetupTran(Numeric *_umeric);
 
-        void LoadDC(Numeric *_numeric);
+        void LoadDC();
 
         void SetDCVoltage(double _dc_voltage);
         double GetDCVoltage() const;
@@ -29,6 +29,9 @@ class Resistor : public Device
         double r;
         Node *n1;
         Node *n2;
+        int n_pos;
+        int n_neg;
+
         double dc_voltage;
         double dc_current;
         Complex ac_voltage;

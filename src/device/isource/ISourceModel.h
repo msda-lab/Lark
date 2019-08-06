@@ -19,7 +19,7 @@ class ISourceModel : public Model
         void SetupAC(Numeric *_numeric);
         void SetupTran(Numeric *_numeric);
 
-        void LoadDC(Numeric *_numeric);
+        void LoadDC();
         void LoadAC(double _omega);
         void LoadTran(double _t, double _h, bool _iter);
 

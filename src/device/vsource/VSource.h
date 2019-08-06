@@ -14,8 +14,8 @@ class VSource : public Device
         void SetupAC(Numeric *_numeric);
         void SetupTran(Numeric *_numeric);
 
-        void LoadDC(Numeric *_numeric);
-        void LoadSweepDC(Numeric *_numeric, double _value);
+        void LoadDC();
+        void LoadSweepDC(double _value);
         void LoadAC();
         void LoadTran();
 
@@ -27,6 +27,8 @@ class VSource : public Device
     private: 
         double dc_value;
         Complex ac_value;
+        int n_pos;
+        int n_neg;
         int branch_id;
 
         Node *n1;

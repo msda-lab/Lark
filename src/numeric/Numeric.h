@@ -24,7 +24,7 @@ public:
 // Ax = b : Matrix A
 public:
     void ResetMatrix(double _value = 0);
-    void ResetRHS(double _value);
+    void ResetVector(double _value);
 
 // Ax = b : Matrix A
     void GetSolution();

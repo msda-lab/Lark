@@ -176,12 +176,13 @@ Device *Circuit::GetDevice(const string &_name) const
 
 void Circuit::LoadSweepDC(Device *_src, double _src_value)
 {
-
+    _src->LoadSweepDC(_src_value);
 }
 
 void Circuit::LoadDC()
 {
-
+    for(auto it = ckt_inst->GetModelList().begin(); it != ckt_inst->GetModelList().end(); ++ it)
+        it->second->LoadDC();
 }
 
 void Circuit::Setup(int _analysis_type)
@@ -208,17 +209,18 @@ void Circuit::Setup(int _analysis_type)
 
 void Circuit::Reset()
 {
-
+    ResetMatrix();
+    ResetVector();
 }
 
 void Circuit::ResetMatrix()
 {
-
+    numeric->ResetMatrix(0);
 }
 
-void Circuit::ResetRHS()
+void Circuit::ResetVector()
 {
-
+    numeric->ResetVector(0);
 }
 
 // do some operations before simulation

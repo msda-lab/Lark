@@ -14,7 +14,7 @@ class Capacitor : public Device
         void SetupTran(Numeric *_numeric);
         void SetupAC(Numeric *_numeric);
 
-        void LoadDC(Numeric *_numeric);
+        void LoadDC();
         void LoadAC();
         void LoadTran();
 
@@ -27,6 +27,9 @@ class Capacitor : public Device
         double c;
         Node *n1;
         Node *n2;
+        int n_pos;
+        int n_neg;
+
         Complex ac_voltage;
         Complex ac_current;
 

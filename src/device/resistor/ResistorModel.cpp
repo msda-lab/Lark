@@ -14,9 +14,10 @@ ResistorModel::~ResistorModel()
     res_list.clear();
 }
 
-void ResistorModel::LoadDC(Numeric *_numeric)
+void ResistorModel::LoadDC()
 {
-
+    for(size_t i = 0; i < res_list.size(); ++ i)
+        res_list[i]->LoadDC();
 }
 
 void ResistorModel::LoadAC(double _omega)

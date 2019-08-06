@@ -19,7 +19,7 @@ class VSourceModel : public Model
         void SetupAC(Numeric *numeric);
         void SetupTran(Numeric *numeric);
 
-        void LoadDC(Numeric *_numeric);
+        void LoadDC();
         void LoadAC(double _omega);
         void LoadTran(double _t, double _h, bool _iter);
 
