@@ -35,7 +35,7 @@ class Circuit
 
         void Reset();
         void ResetMatrix();
-        void ResetRHS();
+        void ResetVector();
         void Setup(int _analysis_type);
 
         void FinishParsing();

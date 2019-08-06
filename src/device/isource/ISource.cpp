@@ -7,6 +7,8 @@ ISource::ISource(const string &_name, Node *_n1, Node *_n2)
 {
     n1 = _n1;
     n2 = _n2;
+    n_pos = n1->GetLocation();
+    n_neg = n2->GetLocation();
     SetType(ISOURCE_TYPE);
 }
 
@@ -18,27 +20,39 @@ ISource::~ISource()
 void ISource::SetupDC(Numeric *_numeric)
 {
     // do nothing
+    numeric = _numeric;
 
 }
 
 void ISource::SetupAC(Numeric *_numeric)
 {
+    numeric = _numeric;
 
 }
 
 void ISource::SetupTran(Numeric *_numeric)
 {
-
+    numeric = _numeric;
 }
 
-void ISource::LoadDC(Numeric *_numeric)
+void ISource::LoadDC()
 {
+    /*          RHS
+     *
+     * N+       -I
+     *
+     * N-        I
+     *
+     */
 
+    numeric->AddVectorValue(n_pos, -1 * dc_value);
+    numeric->AddVectorValue(n_neg,  1 * dc_value);
 }
 
-void ISource::LoadSweepDC(Numeric *_numeric, double _value)
+void ISource::LoadSweepDC(double _value)
 {
-    
+    numeric->AddVectorValue(n_pos, -1 * (_value - dc_value));
+    numeric->AddVectorValue(n_neg,  1 * (_value - dc_value));
 }
 
 void ISource::LoadAC()

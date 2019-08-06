@@ -17,23 +17,24 @@ Capacitor::~Capacitor()
 void Capacitor::SetupDC(Numeric *_numeric)
 {
     // do nothing
-
+    numeric = _numeric;
 }
 
 void Capacitor::SetupAC(Numeric *_numeric)
 {
     // has to allocate new memory
+    numeric = _numeric;
 
 }
 
 void Capacitor::SetupTran(Numeric *_numeric)
 {
-
+    numeric = _numeric;
 }
 
-void Capacitor::LoadDC(Numeric *_numeric)
+void Capacitor::LoadDC()
 {
-
+    // do nothing
 }
 
 void Capacitor::LoadAC()

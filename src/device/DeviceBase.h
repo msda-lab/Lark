@@ -28,10 +28,13 @@ class Device
         virtual void SetupAC(Numeric *_numeric) = 0;
         virtual void SetupTran(Numeric *_numeric) = 0;
 
-        virtual void LoadDC(Numeric *numeric) = 0;
+        virtual void LoadDC() = 0;
+        virtual void LoadSweepDC(double _value) {}
     protected: 
         string name;
         int type;
+
+        Numeric *numeric;
 };
 
 class Node
@@ -85,7 +88,7 @@ class Model
         virtual void SetupAC(Numeric *_numeric) = 0;
         virtual void SetupTran(Numeric *_numeric) = 0;
 
-        virtual void LoadDC(Numeric *_numeric) = 0;
+        virtual void LoadDC() = 0;
         virtual void LoadAC(double _omega) = 0;
         virtual void LoadTran(double _t, double _h, bool _iter) = 0;
 

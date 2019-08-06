@@ -6,6 +6,8 @@ VSource::VSource(const string &_name, Node *_n1, Node *_n2)
 {
     n1 = _n1;
     n2 = _n2;
+    n_pos = n1->GetLocation();
+    n_neg = n2->GetLocation();
     SetType(VSOURCE_TYPE);
     branch_id = 0;
 }
@@ -18,33 +20,51 @@ VSource::~VSource()
 void VSource::SetupDC(Numeric *_numeric)
 {
     // Set branch id to the last index of matrix
-    branch_id = _numeric->GetDimension();
+    numeric = _numeric;
 
-    _numeric->AddMatrixRow(1);
-    _numeric->AddMatrixColumn(1);
-    _numeric->AddVectorRow(1);
+    branch_id = numeric->GetDimension();
 
-    _numeric->AddDimension(1);
+    numeric->AddMatrixRow(1);
+    numeric->AddMatrixColumn(1);
+    numeric->AddVectorRow(1);
+
+    numeric->AddDimension(1);
 }
 
 void VSource::SetupAC(Numeric *_numeric)
 {
-
+    numeric = _numeric;
 }
 
 void VSource::SetupTran(Numeric *_numeric)
 {
+    numeric = _numeric;
 
 }
 
-void VSource::LoadDC(Numeric *_numeric)
+void VSource::LoadDC()
 {
+    /*          N+         N-         Branch           RHS
+     *
+     * N+       0          0            1               0
+     *
+     * N-       0          0            -1              0
+     *
+     * Branch   1          -1           0               V
+     *
+     */
 
+    numeric->AddMatrixValue(n_pos, branch_id, 1);
+    numeric->AddMatrixValue(n_neg, branch_id, -1);
+    numeric->AddMatrixValue(branch_id, n_pos, 1);
+    numeric->AddMatrixValue(branch_id, n_neg, -1);
+
+    numeric->AddVectorValue(branch_id, dc_value);
 }
 
-void VSource::LoadSweepDC(Numeric *_numeric, double _value)
+void VSource::LoadSweepDC(double _value)
 {
-    
+    numeric->AddVectorValue(branch_id, _value - dc_value);
 }
 
 void VSource::LoadAC()

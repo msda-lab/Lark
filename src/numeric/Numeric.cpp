@@ -42,7 +42,7 @@ void Numeric::ResetMatrix(double _value)
 }
 
 // empty
-void Numeric::ResetRHS(double _value)
+void Numeric::ResetVector(double _value)
 {
 }
 
