@@ -215,12 +215,12 @@ void Circuit::Reset()
 
 void Circuit::ResetMatrix()
 {
-    numeric->ResetMatrix(0);
+    numeric->ResetMatrix();
 }
 
 void Circuit::ResetVector()
 {
-    numeric->ResetVector(0);
+    numeric->ResetVector();
 }
 
 // do some operations before simulation
@@ -232,6 +232,11 @@ void Circuit::FinishParsing()
 }
 
 /******************************** Print and Destroy *****************************/
+
+Numeric *Circuit::GetNumericPtr() const
+{
+    return numeric;
+}
 
 void Circuit::DestroyMatrixAndVector()
 {

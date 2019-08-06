@@ -38,6 +38,7 @@ class Circuit
         void ResetVector();
         void Setup(int _analysis_type);
 
+        Numeric *GetNumericPtr() const;
         void FinishParsing();
         void DestroyMatrixAndVector();
         void PrintAllDevice() const;

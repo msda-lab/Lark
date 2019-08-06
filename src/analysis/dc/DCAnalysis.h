@@ -21,7 +21,6 @@ class DCAnalysis : public Analysis
         double end;
         double incr;
         Device *sweep_src;
-
 };
 
 #endif // DC_ANALYSIS_H
