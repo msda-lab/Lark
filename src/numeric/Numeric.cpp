@@ -1,29 +1,28 @@
 #include "Numeric.h"
 
-Numeric::Numeric()
-{
-}
+Numeric::Numeric()  {}
 
 Numeric::Numeric(int _node_count, int _analysis_type)
 {
-    numeric_matrix = new MatrixEigen(_node_count, _node_count);
-    numeric_vector = new VectorXd(_node_count); 
+    numeric_matrix = new MatrixEigen(_node_count, _node_count, _node_count);
+    // numeric_vector = new VectorXd(_node_count); 
     analysis_type = _analysis_type;
     dimension = _node_count;
 }
 
 Numeric::~Numeric()
 {
+    delete numeric_matrix;
 }
 
 void Numeric::Destroy()
 {
-
+    std::cout << "Destroy!" << std::endl;
 }
 
 void Numeric::GetSolution()
 {
-
+    numeric_matrix->EigenDoSolve();
 }
 
 int Numeric::GetDimension() const
@@ -36,73 +35,68 @@ void Numeric::AddDimension(int _dimension)
     dimension += _dimension;
 }
 
-// empty
-void Numeric::ResetMatrix()
+void Numeric::ResetMatrix()     // reset to zero
 {
+    numeric_matrix->EigenAddMatrixColumn(0);
 }
 
-// empty
-void Numeric::ResetVector()
+void Numeric::ResetVector()     // reset to zero
 {
+    numeric_matrix->EigenAddVectorRow(0);
 }
 
-// empty
 void Numeric::AddMatrixRow(int _row_count)
 {
+    numeric_matrix->EigenAddMatrixRow(_row_count);
 }
 
-// empty
 void Numeric::AddMatrixColumn(int _column_count)
 {
+    numeric_matrix->EigenAddMatrixColumn(_column_count);
 }
 
 double Numeric::GetMatrixValue(int _row, int _column)
 {
-    return numeric_matrix->GetValue(_row, _column);
+    return numeric_matrix->EigenGetMatrixValue(_row, _column);
 }
 
 void Numeric::SetMatrixValue(int _row, int _column, double _value)
 {
-    numeric_matrix->SetValue(_row, _column, _value);
+    numeric_matrix->EigenSetMatrixValue(_row, _column, _value);
 }
 
 void Numeric::AddMatrixValue(int _row, int _column, double _value)
 {
-    numeric_matrix->AddValue(_row, _column, _value);
+    numeric_matrix->EigenAddMatrixValue(_row, _column, _value);
 }
 
-// empty
 void Numeric::AddVectorRow(int _row_count)
 {
-
+    numeric_matrix->EigenAddVectorRow(_row_count);
 }
 
-// empty
 double Numeric::GetVectorValue(int _row)
 {
-    return 0;
-
+    return numeric_matrix->EigenGetVectorValue(_row);
 }
 
-// empty
 void Numeric::SetVectorValue(int _row, double _value)
 {
-
+    numeric_matrix->EigenSetVectorValue(_row, _value);
 }
 
-// empty
 void Numeric::AddVectorValue(int _row, double _value)
 {
-
+    numeric_matrix->EigenAddVectorValue(_row, _value);
 }
 
 void Numeric::PrintMatrix() const
 {
-
+    numeric_matrix->EigenPrintMatrix();
 }
 
 void Numeric::PrintVector() const
 {
-
+    numeric_matrix->EigenPrintVector();
 }
 

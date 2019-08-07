@@ -2,15 +2,11 @@
 #define NUMERIC_H
 
 #define EIGENCHOSEN 1
-
 #include "MatrixEigen.h"
-
-#include "../include/eigen/Core"
-#include "../include/eigen/Dense"
 
 #include <iostream>
 
-using namespace Eigen;
+//using namespace Eigen;
 using namespace std;
 
 class Numeric
@@ -57,11 +53,11 @@ private:
     int analysis_type;      // Analysis Type : DC = 1000 .etc
     int dimension;
 
-#if 1
+#if EIGENCHOSEN
     MatrixEigen *numeric_matrix;
 #endif
 
-    VectorXd *numeric_vector;
+    // VectorXd *numeric_vector;
 };
 
 #endif // NUMERIC_H
