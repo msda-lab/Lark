@@ -31,6 +31,7 @@ std::vector<double> Numeric::GetSolution()
         // std::cout << middle_vector(i) << std::endl;
         solution_vector.push_back(middle_vector(i));
     }
+    std::cout << std::endl;
     return solution_vector;
 }
 
