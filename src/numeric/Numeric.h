@@ -5,9 +5,10 @@
 #include "MatrixEigen.h"
 
 #include <iostream>
+#include <vector>
 
 //using namespace Eigen;
-using namespace std;
+//using namespace std;
 
 class Numeric
 {
@@ -23,7 +24,7 @@ public:
     void ResetVector();
 
 // Ax = b : Matrix A
-    void GetSolution();
+    std::vector<double> GetSolution();
 
 // Ax = b : Matrix A
 // operation on matrix

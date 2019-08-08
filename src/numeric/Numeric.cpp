@@ -20,9 +20,17 @@ void Numeric::Destroy()
     std::cout << "Destroy!" << std::endl;
 }
 
-void Numeric::GetSolution()
+std::vector<double> Numeric::GetSolution()
 {
     numeric_matrix->EigenDoSolve();
+    VectorXd middle_vector = numeric_matrix->EigenSolution();
+    int size = middle_vector.size();
+    std::vector<double> solution_vector;
+    for(int i = 0; i < size; i++)
+    {
+        solution_vector.push_back(middle_vector(i));
+    }
+    return solution_vector;
 }
 
 int Numeric::GetDimension() const
@@ -33,6 +41,9 @@ int Numeric::GetDimension() const
 void Numeric::AddDimension(int _dimension)
 {
     dimension += _dimension;
+    numeric_matrix->EigenAddMatrixColumn(_dimension);
+    numeric_matrix->EigenAddMatrixRow(_dimension);
+    numeric_matrix->EigenAddVectorRow(_dimension);
 }
 
 void Numeric::ResetMatrix()     // reset to zero
