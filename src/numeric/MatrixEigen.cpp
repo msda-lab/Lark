@@ -1,30 +1,100 @@
 #include "MatrixEigen.h"
 
-MatrixEigen::MatrixEigen(int _row, int _column)
+MatrixEigen::MatrixEigen(int _matrix_row, int _matrix_column, int _vector_row)
 {
-    matrix = MatrixXd(_row, _column);
+    matrix_row_count = _matrix_row;
+    matrix_column_count = _matrix_column;
+    vector_row_count = _vector_row;
+    eigen_matrix = MatrixXd::Zero(matrix_row_count, matrix_column_count);
+    eigen_vector = VectorXd::Zero(vector_row_count);
 }
 
 // empty
 MatrixEigen::~MatrixEigen() {}
 
-void MatrixEigen::GetInverseMatrix()
+void MatrixEigen::EigenPrintMatrix()
 {
-    matrix_inverse = matrix.inverse();
+    std::cout << eigen_matrix << std::endl;
 }
 
-void MatrixEigen::SetValue(int _row, int _column, double _value)
+void EigenPrintMatrixInverse()  {}
+
+void MatrixEigen::EigenPrintVector()
 {
-    matrix(_row, _column) = _value;
+    std::cout << eigen_vector << std::endl;
 }
 
-void MatrixEigen::AddValue(int _row, int _column, double _value)
+void MatrixEigen::EigenPrintVectorSolution()
 {
-    matrix(_row, _column) += _value;
+    std::cout << eigen_vector_solution << std::endl;
 }
 
-double MatrixEigen::GetValue(int _row, int _column)
+void MatrixEigen::EigenAddMatrixRow(int _matrix_row_count)
 {
-    double _value = matrix(_row, _column);
-    return _value;
+    matrix_row_count += _matrix_row_count;
+    eigen_matrix = MatrixXd::Zero(matrix_row_count, matrix_column_count);
+}
+
+void MatrixEigen::EigenAddMatrixColumn(int _matrix_column_count)
+{
+    matrix_column_count += _matrix_column_count;
+    eigen_matrix = MatrixXd::Zero(matrix_row_count, matrix_column_count);
+}
+
+void MatrixEigen::EigenAddVectorRow(int _vector_row_count)
+{
+    vector_row_count +=_vector_row_count;
+    eigen_vector = VectorXd::Zero(vector_row_count);
+}
+
+void MatrixEigen::EigenSetMatrixValue(int _matrix_row, int _matrix_column, double _matrix_value)
+{
+    eigen_matrix(_matrix_row, _matrix_column) = _matrix_value;
+}
+
+void MatrixEigen::EigenAddMatrixValue(int _matrix_row, int _matrix_column, double _matrix_value)
+{
+    eigen_matrix(_matrix_row, _matrix_column) += _matrix_value;
+}
+
+double MatrixEigen::EigenGetMatrixValue(int _matrix_row, int _matrix_column)
+{
+    double _matrix_value = eigen_matrix(_matrix_row, _matrix_column);
+    return _matrix_value;
+}
+
+void MatrixEigen::EigenSetVectorValue(int _vector_row, double _vector_value)
+{
+    eigen_vector(_vector_row) = _vector_value;
+}
+
+void MatrixEigen::EigenAddVectorValue(int _vector_row, double _vector_value)
+{
+    eigen_vector(_vector_row) += _vector_value;
+}
+
+double MatrixEigen::EigenGetVectorValue(int _vector_row)
+{
+    double _vector_value = eigen_vector(_vector_row);
+    return _vector_value;
+}
+
+MatrixXd MatrixEigen::EigenGetInverseMatrix()
+{
+    return eigen_matrix.inverse();
+}
+
+void MatrixEigen::EigenInverseMatrixPlusVector()
+{
+    eigen_vector_solution = EigenGetInverseMatrix() * eigen_vector;
+}
+
+void MatrixEigen::EigenDoSolve()
+{
+    EigenInverseMatrixPlusVector();
+}
+
+VectorXd MatrixEigen::EigenSolution()
+{
+    return eigen_vector_solution;
 }
