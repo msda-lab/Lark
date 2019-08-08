@@ -13,6 +13,8 @@ VSourceModel::~VSourceModel()
 
 void VSourceModel::LoadDC()
 {
+    for(size_t i = 0; i < vsrc_list.size(); ++ i)
+        vsrc_list[i]->LoadDC();
 
 }
 
