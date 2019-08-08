@@ -97,6 +97,7 @@ MatrixXd MatrixEigen::EigenGetInverseMatrix()
 void MatrixEigen::EigenInverseMatrixPlusVector()
 {
     EigenPrintMatrix();
+    EigenPrintVector();
     VectorXd eigen_middle_vector = VectorXd::Zero(vector_row_count - 1);
     for(int i = 0; i < vector_row_count - 1; i++)
     {
