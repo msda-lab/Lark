@@ -28,7 +28,7 @@ std::vector<double> Numeric::GetSolution()
     std::vector<double> solution_vector;
     for(int i = 0; i < size; i++)
     {
-        std::cout << middle_vector(i);
+        // std::cout << middle_vector(i) << std::endl;
         solution_vector.push_back(middle_vector(i));
     }
     std::cout << std::endl;
@@ -43,9 +43,9 @@ int Numeric::GetDimension() const
 void Numeric::AddDimension(int _dimension)
 {
     dimension += _dimension;
-    //numeric_matrix->EigenAddMatrixColumn(_dimension);
-    //numeric_matrix->EigenAddMatrixRow(_dimension);
-    //numeric_matrix->EigenAddVectorRow(_dimension);
+    // numeric_matrix->EigenAddMatrixColumn(_dimension);
+    // numeric_matrix->EigenAddMatrixRow(_dimension);
+    // numeric_matrix->EigenAddVectorRow(_dimension);
 }
 
 void Numeric::ResetMatrix()     // reset to zero
