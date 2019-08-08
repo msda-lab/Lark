@@ -110,4 +110,3 @@ void Numeric::PrintVector() const
 {
     numeric_matrix->EigenPrintVector();
 }
-
