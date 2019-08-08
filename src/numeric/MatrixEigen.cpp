@@ -7,6 +7,7 @@ MatrixEigen::MatrixEigen(int _matrix_row, int _matrix_column, int _vector_row)
     vector_row_count = _vector_row;
     eigen_matrix = MatrixXd::Zero(matrix_row_count, matrix_column_count);
     eigen_vector = VectorXd::Zero(vector_row_count);
+    eigen_vector_solution = VectorXd::Zero(vector_row_count);
 }
 
 // empty
@@ -45,6 +46,7 @@ void MatrixEigen::EigenAddVectorRow(int _vector_row_count)
 {
     vector_row_count +=_vector_row_count;
     eigen_vector = VectorXd::Zero(vector_row_count);
+    eigen_vector_solution = VectorXd::Zero(vector_row_count);
 }
 
 void MatrixEigen::EigenSetMatrixValue(int _matrix_row, int _matrix_column, double _matrix_value)
@@ -81,12 +83,31 @@ double MatrixEigen::EigenGetVectorValue(int _vector_row)
 
 MatrixXd MatrixEigen::EigenGetInverseMatrix()
 {
-    return eigen_matrix.inverse();
+    MatrixXd middle_matrix = MatrixXd::Zero(matrix_row_count - 1, matrix_column_count - 1);
+    for(int i = 0; i < matrix_row_count - 1; i++)
+    {
+        for(int j = 0; j < matrix_column_count - 1; j++)
+        {
+            middle_matrix(i, j) = eigen_matrix(i + 1, j + 1);
+        }
+    }
+    return middle_matrix.inverse();   
 }
 
 void MatrixEigen::EigenInverseMatrixPlusVector()
 {
-    eigen_vector_solution = EigenGetInverseMatrix() * eigen_vector;
+    EigenPrintMatrix();
+    VectorXd eigen_middle_vector = VectorXd::Zero(vector_row_count - 1);
+    for(int i = 0; i < vector_row_count - 1; i++)
+    {
+        eigen_middle_vector(i) = eigen_vector(i + 1);
+    }
+    VectorXd middle_solution = EigenGetInverseMatrix() * eigen_middle_vector;
+    // eigen_vector_solution(0) = 0.0;
+    for(int i = 1; i < vector_row_count; i++)
+    {
+        eigen_vector_solution(i) = eigen_middle_vector(i - 1);
+    }
 }
 
 void MatrixEigen::EigenDoSolve()
