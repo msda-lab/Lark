@@ -106,7 +106,7 @@ void MatrixEigen::EigenInverseMatrixPlusVector()
     // eigen_vector_solution(0) = 0.0;
     for(int i = 1; i < vector_row_count; i++)
     {
-        eigen_vector_solution(i) = eigen_middle_vector(i - 1);
+        eigen_vector_solution(i) = middle_solution(i - 1);
     }
 }
 
