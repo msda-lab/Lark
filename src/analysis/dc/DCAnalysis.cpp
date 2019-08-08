@@ -1,6 +1,13 @@
 #include "DCAnalysis.h"
 
+#include <iostream>
+#include <vector>
+
 #include "Global.h"
+
+using std::vector;
+using std::cout;
+using std::endl;
 
 DCAnalysis::DCAnalysis(double _start, double _end, double _incr)
     : Analysis(DC_ANALYSIS_TYPE)
@@ -33,7 +40,11 @@ void DCAnalysis::DoAnalysis()
 
 void DCAnalysis::DoSinglePointAnalysis()
 {
-    ckt->GetNumericPtr()->GetSolution();
+    vector<double> solution = ckt->GetNumericPtr()->GetSolution();
+    for(int i = 0; i < solution.size(); ++ i)
+        cout << solution[i] << " ";
+    cout << endl;
+    solution.clear();
 }
 
 void DCAnalysis::Reload(double _src_value)
