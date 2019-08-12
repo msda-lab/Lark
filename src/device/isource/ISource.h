@@ -32,7 +32,6 @@ class ISource : public Device
         Node *n2;
         int n_pos;
         int n_neg;
-
 };
 
 #endif //ISOURCE_H

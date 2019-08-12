@@ -13,6 +13,8 @@ ISourceModel::~ISourceModel()
 
 void ISourceModel::LoadDC()
 {
+    for(size_t i = 0; i < isrc_list.size(); ++ i)
+        isrc_list[i]->LoadDC();
 
 }
 
