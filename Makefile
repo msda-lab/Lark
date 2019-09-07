@@ -50,7 +50,7 @@ OBJ_DIR = ./build
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(notdir $(subst .cpp,.o, $(SRCS))))
 
-DEPS = $(OBJS:.o=.o.d)
+DEPS = $(OBJS:%.o=%.d)
 
 CXX = clang++
 #CXX = g++
@@ -67,12 +67,13 @@ all : $(TARGET)
 $(TARGET) : $(OBJS)
 	$(CXX) -o $@ $^ $(LDXXFLAGS)
 
+-include $(DEPS)
 
 $(OBJ_DIR)/%.o : %.cpp
-	$(CXX) $(CXXFLAGS) -o $@ -c $<
+	$(CXX) $(CXXFLAGS) -o $@ -c -MMD $<
 
 
 .PHONY : clean
 
 clean:
-	$(RM) $(OBJS) $(TARGET)
+	$(RM) $(OBJS) $(TARGET) $(DEPS)
